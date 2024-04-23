@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
-		188DE6142BD8497300B41403 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6132BD8497300B41403 /* ViewController.swift */; };
-		188DE6172BD8497300B41403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6152BD8497300B41403 /* Main.storyboard */; };
 		188DE6192BD8497600B41403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6182BD8497600B41403 /* Assets.xcassets */; };
 		188DE61C2BD8497600B41403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */; };
+		188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6272BD84A2200B41403 /* StartViewController.swift */; };
+		188DE62A2BD84A3900B41403 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6292BD84A3900B41403 /* StartView.swift */; };
+		188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */; };
+		188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62E2BD8544800B41403 /* AuthoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		188DE60C2BD8497300B41403 /* myCofeHomeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCofeHomeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188DE60F2BD8497300B41403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188DE6112BD8497300B41403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		188DE6132BD8497300B41403 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		188DE6162BD8497300B41403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		188DE6182BD8497600B41403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188DE61B2BD8497600B41403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188DE61D2BD8497600B41403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188DE6272BD84A2200B41403 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		188DE6292BD84A3900B41403 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		188DE62E2BD8544800B41403 /* AuthoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,57 @@
 		188DE60E2BD8497300B41403 /* myCofeHomeApp */ = {
 			isa = PBXGroup;
 			children = (
-				188DE60F2BD8497300B41403 /* AppDelegate.swift */,
-				188DE6112BD8497300B41403 /* SceneDelegate.swift */,
-				188DE6132BD8497300B41403 /* ViewController.swift */,
-				188DE6152BD8497300B41403 /* Main.storyboard */,
-				188DE6182BD8497600B41403 /* Assets.xcassets */,
-				188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */,
+				188DE6232BD8498B00B41403 /* App */,
+				188DE6242BD8499900B41403 /* Modules */,
+				188DE62B2BD852A300B41403 /* Authorization */,
+				188DE6252BD849AF00B41403 /* Recources */,
 				188DE61D2BD8497600B41403 /* Info.plist */,
 			);
 			path = myCofeHomeApp;
+			sourceTree = "<group>";
+		};
+		188DE6232BD8498B00B41403 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				188DE60F2BD8497300B41403 /* AppDelegate.swift */,
+				188DE6112BD8497300B41403 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		188DE6242BD8499900B41403 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				188DE6262BD849EC00B41403 /* Start */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		188DE6252BD849AF00B41403 /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				188DE6182BD8497600B41403 /* Assets.xcassets */,
+				188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */,
+			);
+			path = Recources;
+			sourceTree = "<group>";
+		};
+		188DE6262BD849EC00B41403 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				188DE6272BD84A2200B41403 /* StartViewController.swift */,
+				188DE6292BD84A3900B41403 /* StartView.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		188DE62B2BD852A300B41403 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */,
+				188DE62E2BD8544800B41403 /* AuthoView.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +173,6 @@
 			files = (
 				188DE61C2BD8497600B41403 /* LaunchScreen.storyboard in Resources */,
 				188DE6192BD8497600B41403 /* Assets.xcassets in Resources */,
-				188DE6172BD8497300B41403 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +183,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188DE6142BD8497300B41403 /* ViewController.swift in Sources */,
+				188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */,
+				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
+				188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */,
+				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		188DE6152BD8497300B41403 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				188DE6162BD8497300B41403 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -218,7 +258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -296,7 +336,6 @@
 				INFOPLIST_FILE = myCofeHomeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -306,9 +345,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = omurbekov.myCofeHomeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,7 +366,6 @@
 				INFOPLIST_FILE = myCofeHomeApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -333,9 +375,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = omurbekov.myCofeHomeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
