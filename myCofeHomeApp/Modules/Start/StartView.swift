@@ -11,7 +11,7 @@ protocol StartViewDelegate: AnyObject {
     func toComeIn()
 }
 
-class StartView: UIView {
+class StartView: BaseView {
     
     weak var delegate: StartViewDelegate?
     
@@ -53,22 +53,8 @@ class StartView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setup()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setup()
-        
-    }
-    
-    private func setup(){
-        
+    override func setup(){
+        super.setup()
         setupAdd()
         setupLayouts()
         
@@ -76,17 +62,19 @@ class StartView: UIView {
         
     }
     
-    private func setupAdd(){
+    override func setupAdd(){
+        super.setupAdd()
         addSubview(titleRestourant)
         addSubview(titleLabel)
         addSubview(toComeInBtn)
         addSubview(signInBtn)
     }
     
-    private func setupLayouts(){
+    override func setupLayouts(){
+        super.setupLayouts()
         
         NSLayoutConstraint.activate([
-        
+            
             titleRestourant.topAnchor.constraint(equalTo: topAnchor),
             titleRestourant.centerXAnchor.constraint(equalTo: centerXAnchor),
             

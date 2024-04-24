@@ -15,6 +15,7 @@
 		188DE62A2BD84A3900B41403 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6292BD84A3900B41403 /* StartView.swift */; };
 		188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */; };
 		188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62E2BD8544800B41403 /* AuthoView.swift */; };
+		188DE6322BD9001D00B41403 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6312BD9001D00B41403 /* BaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		188DE6292BD84A3900B41403 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		188DE62E2BD8544800B41403 /* AuthoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoView.swift; sourceTree = "<group>"; };
+		188DE6312BD9001D00B41403 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		188DE6242BD8499900B41403 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				188DE6302BD9000300B41403 /* Base */,
 				188DE6262BD849EC00B41403 /* Start */,
 			);
 			path = Modules;
@@ -111,6 +114,14 @@
 				188DE62E2BD8544800B41403 /* AuthoView.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		188DE6302BD9000300B41403 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				188DE6312BD9001D00B41403 /* BaseView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
 				188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */,
+				188DE6322BD9001D00B41403 /* BaseView.swift in Sources */,
 				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
