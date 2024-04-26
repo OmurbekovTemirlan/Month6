@@ -17,7 +17,7 @@ class AuthorizationViewController: UIViewController {
         super.viewDidLoad()
             
         view.backgroundColor = .systemBackground
-        navigationItem.hidesBackButton = false
+        navigationItem.hidesBackButton = true
         
         setup()
     }
@@ -50,7 +50,7 @@ extension AuthorizationViewController: AuthoViewDelegate {
     func toComeIn(with model: AuthoModel) {
         if sessionManager.isValid(phoneNumber: model.phoneNumber) {
            sessionManager.saveSession(phoneNumber: model.phoneNumber)
-        let vc = HomeViewController()
+        let vc = TabBarViewController()
             
             navigationController?.pushViewController(vc, animated: true)
         }

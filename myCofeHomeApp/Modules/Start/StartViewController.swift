@@ -11,8 +11,6 @@ class StartViewController: UIViewController {
     
     private let startView = StartView()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +51,10 @@ class StartViewController: UIViewController {
 
 extension StartViewController: StartViewDelegate {
     func toComeIn() {
+        
         let vc = AuthorizationViewController()
+        
+        UserDefaults.standard.set(true, forKey: "IsOnBord")
         
         navigationController?.pushViewController(vc, animated: true)
         

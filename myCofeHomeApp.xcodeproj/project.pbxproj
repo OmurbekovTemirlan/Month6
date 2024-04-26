@@ -16,6 +16,21 @@
 		188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */; };
 		188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE62E2BD8544800B41403 /* AuthoView.swift */; };
 		188DE6322BD9001D00B41403 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6312BD9001D00B41403 /* BaseView.swift */; };
+		18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5E72BD9187700D73889 /* HomeViewController.swift */; };
+		18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */; };
+		18B5B5ED2BD9212400D73889 /* AuthoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EC2BD9212400D73889 /* AuthoModel.swift */; };
+		18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */; };
+		18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F52BD9416200D73889 /* BascetViewController.swift */; };
+		18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F92BD9419900D73889 /* CatalogViewController.swift */; };
+		18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */; };
+		18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */; };
+		18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */; };
+		18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */; };
+		18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */; };
+		18B5B6092BDB04B100D73889 /* DesertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6082BDB04B100D73889 /* DesertViewController.swift */; };
+		18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */; };
+		18B5B60E2BDBADF000D73889 /* DessertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60D2BDBADF000D73889 /* DessertView.swift */; };
+		18B5B6112BDBBB7200D73889 /* DessertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6102BDBBB7200D73889 /* DessertModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +45,21 @@
 		188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		188DE62E2BD8544800B41403 /* AuthoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoView.swift; sourceTree = "<group>"; };
 		188DE6312BD9001D00B41403 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		18B5B5E72BD9187700D73889 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
+		18B5B5EC2BD9212400D73889 /* AuthoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoModel.swift; sourceTree = "<group>"; };
+		18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		18B5B5F52BD9416200D73889 /* BascetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BascetViewController.swift; sourceTree = "<group>"; };
+		18B5B5F92BD9419900D73889 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostumTabBar.swift; sourceTree = "<group>"; };
+		18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
+		18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		18B5B6082BDB04B100D73889 /* DesertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertViewController.swift; sourceTree = "<group>"; };
+		18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshViewController.swift; sourceTree = "<group>"; };
+		18B5B60D2BDBADF000D73889 /* DessertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertView.swift; sourceTree = "<group>"; };
+		18B5B6102BDBBB7200D73889 /* DessertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				188DE6232BD8498B00B41403 /* App */,
+				18B5B5E92BD91FB300D73889 /* Model */,
+				18B5B60A2BDBABD700D73889 /* Splash */,
 				188DE6242BD8499900B41403 /* Modules */,
-				188DE62B2BD852A300B41403 /* Authorization */,
 				188DE6252BD849AF00B41403 /* Recources */,
 				188DE61D2BD8497600B41403 /* Info.plist */,
 			);
@@ -85,6 +116,13 @@
 			children = (
 				188DE6302BD9000300B41403 /* Base */,
 				188DE6262BD849EC00B41403 /* Start */,
+				188DE62B2BD852A300B41403 /* Authorization */,
+				18B5B5EE2BD93E4E00D73889 /* TabBar */,
+				18B5B5E62BD9184700D73889 /* Home */,
+				18B5B5F12BD9401200D73889 /* Bascet */,
+				18B5B5F32BD940BD00D73889 /* Сatalog */,
+				18B5B5F42BD9412A00D73889 /* Profile */,
+				18B5B6072BDB048A00D73889 /* Desert */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -112,6 +150,7 @@
 			children = (
 				188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */,
 				188DE62E2BD8544800B41403 /* AuthoView.swift */,
+				18B5B5EC2BD9212400D73889 /* AuthoModel.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -122,6 +161,92 @@
 				188DE6312BD9001D00B41403 /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		18B5B5E62BD9184700D73889 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5E72BD9187700D73889 /* HomeViewController.swift */,
+				18B5B6022BDA633100D73889 /* Cells */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		18B5B5E92BD91FB300D73889 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18B5B5EE2BD93E4E00D73889 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */,
+				18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */,
+				18B5B5FD2BDA2A5600D73889 /* UI */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		18B5B5F12BD9401200D73889 /* Bascet */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5F52BD9416200D73889 /* BascetViewController.swift */,
+			);
+			path = Bascet;
+			sourceTree = "<group>";
+		};
+		18B5B5F32BD940BD00D73889 /* Сatalog */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5F92BD9419900D73889 /* CatalogViewController.swift */,
+			);
+			path = "Сatalog";
+			sourceTree = "<group>";
+		};
+		18B5B5F42BD9412A00D73889 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		18B5B5FD2BDA2A5600D73889 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		18B5B6022BDA633100D73889 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */,
+				18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		18B5B6072BDB048A00D73889 /* Desert */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B6082BDB04B100D73889 /* DesertViewController.swift */,
+				18B5B60D2BDBADF000D73889 /* DessertView.swift */,
+				18B5B6102BDBBB7200D73889 /* DessertModel.swift */,
+			);
+			path = Desert;
+			sourceTree = "<group>";
+		};
+		18B5B60A2BDBABD700D73889 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,12 +319,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */,
 				188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */,
+				18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */,
+				18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */,
+				18B5B6112BDBBB7200D73889 /* DessertModel.swift in Sources */,
+				18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */,
+				18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */,
 				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
+				18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */,
+				18B5B5ED2BD9212400D73889 /* AuthoModel.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
+				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
 				188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */,
+				18B5B6092BDB04B100D73889 /* DesertViewController.swift in Sources */,
 				188DE6322BD9001D00B41403 /* BaseView.swift in Sources */,
+				18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */,
+				18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */,
+				18B5B60E2BDBADF000D73889 /* DessertView.swift in Sources */,
+				18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */,
+				18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */,
 				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

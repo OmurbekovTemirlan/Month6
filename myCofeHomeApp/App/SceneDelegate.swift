@@ -16,7 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let navOne = UINavigationController(rootViewController: StartViewController())
+        let initialViev: UIViewController?
+        
+        if UserDefaults.standard.bool(forKey: "IsOnBord") == true {
+            initialViev = SpalshViewController()
+        }else {
+            initialViev = StartViewController()
+        }
+        let navOne = UINavigationController(rootViewController: initialViev!)
         window.rootViewController = navOne
         
         window.makeKeyAndVisible()

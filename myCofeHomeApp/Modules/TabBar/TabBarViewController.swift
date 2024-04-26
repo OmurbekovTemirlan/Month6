@@ -7,23 +7,61 @@
 
 import UIKit
 
-class TabBarViewController: UIViewController {
-
+class TabBarViewController: UITabBarController {
+    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupNavBar()
+        setupCustomTabBar()
+        setupTabItems()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNavBar() {
+        
+        navigationItem.hidesBackButton = true
+       
+        navigationItem.title = "Меню"
+        
+        let belsBtn = UIBarButtonItem(image: UIImage(systemName: "bell.fill"), style: .plain, target: self, action: .none)
+        
+        navigationItem.rightBarButtonItem = belsBtn
+        
+        belsBtn.tintColor = .black
+        
     }
-    */
-
+    
+    
+    private func setupCustomTabBar() {
+        
+        let customTabBar = CostumTabBar()
+        setValue(customTabBar, forKey: "tabBar")
+        
+    }
+    
+    private func setupTabItems() {
+        
+        let homeVC = HomeViewController()
+        let homeNavCont = UINavigationController(rootViewController: homeVC)
+        homeNavCont.tabBarItem.image = UIImage(systemName: "house")
+        
+        let BascetVC = BascetViewController()
+        let bascetNavCont = UINavigationController(rootViewController: BascetVC)
+        bascetNavCont.tabBarItem.image = UIImage(systemName: "cart.fill")
+        
+        let catalogVC = CatalogViewController()
+        let catalogNavCont = UINavigationController(rootViewController: catalogVC)
+        catalogNavCont.tabBarItem.image = UIImage(systemName: "safari.fill")
+        
+        let profileVC = ProfileViewController()
+        let profileNavCont = UINavigationController(rootViewController: profileVC)
+        profileNavCont.tabBarItem.image = UIImage(systemName: "person.circle")
+        
+        setViewControllers([homeNavCont, bascetNavCont, catalogNavCont, profileNavCont], animated: false)
+        
+    }
+    
+    
+    
+    
 }

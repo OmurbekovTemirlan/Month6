@@ -8,46 +8,41 @@
 import UIKit
 
 class DessertViewController: UIViewController {
-
-    private let image: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "espesso")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
     
-    private let titleLabel: UILabel = {
-         let label = UILabel()
-        label.text = "Эспрессо"
-         label.font = .systemFont(ofSize: 16, weight: .regular)
-         label.textColor = .black
-         label.translatesAutoresizingMaskIntoConstraints = false
-         return label
-     }()
+    private let dessertView = DessertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setup()
-    
     }
+    
     private func setup(){
         setupAdd()
         setupLayouts()
+        setupDessertView()
     }
     
     private func setupAdd(){
-        view.addSubview(image)
+        view.addSubview(dessertView)
     }
     
     private func setupLayouts(){
-        NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            image.heightAnchor.constraint(equalToConstant: 300)
         
+        NSLayoutConstraint.activate([
+            
+            dessertView.topAnchor.constraint(equalTo: view.topAnchor),
+            dessertView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            dessertView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            dessertView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
+            
         ])
     }
-
+    
+    private func setupDessertView(){
+        
+        dessertView.translatesAutoresizingMaskIntoConstraints = false
+        
+    }
+    
 }
