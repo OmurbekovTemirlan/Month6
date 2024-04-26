@@ -17,33 +17,51 @@ class HomeViewController: UIViewController {
     private let idCell = "cell1"
     private let idCell2 = "cell2"
     
-    private let titlesCells: [HomeCollectionStruct] =
-    
-    [
-        
-    HomeCollectionStruct(title: "Кофе"),
-    HomeCollectionStruct(title: "Десерты"),
-    HomeCollectionStruct(title: "Выпечка"),
-    HomeCollectionStruct(title: "Коктейлы"),
-    HomeCollectionStruct(title: "Коктейлы"),
-   
+    private let titlesCells = [ HomeCollectionStruct(title: "Кофе"),
+                                 HomeCollectionStruct(title: "Десерты"),
+                                 HomeCollectionStruct(title: "Выпечка"),
+                                 HomeCollectionStruct(title: "Коктейлы"),
+                                 HomeCollectionStruct(title: "Коктейлы"),
+                                 
     ]
     
-    private let dates: [VerticalCollectionStruct] = 
-    
-    [
+    private let products = [
         
         VerticalCollectionStruct(
             image: "capp",
             title: "Капучино",
             infoLab: "Кофейный напиток",
             price: "150 c"),
-        VerticalCollectionStruct(image: "espesso", title: "Эспрессо", infoLab: "Кофейный напиток", price: "100 c"),
-        VerticalCollectionStruct(image: "amer", title: "Американо", infoLab: "Кофейный напиток", price: "120 c"),
-        VerticalCollectionStruct(image: "latte", title: "Латте", infoLab: "Кофейный напиток", price: "100 с"),
-        VerticalCollectionStruct(image: "mokko", title: "Мокко", infoLab: "Кофейный напиток", price: "150 с"),
-        VerticalCollectionStruct(image: "Raf", title: "Раф", infoLab: "Кофейный напиток", price: "90 с"),
-        VerticalCollectionStruct(image: "Fredo", title: "Фредо", infoLab: "Кофейный напиток", price: "100 с"),
+        VerticalCollectionStruct(
+            image: "espesso",
+            title: "Эспрессо",
+            infoLab: "Кофейный напиток",
+            price: "100 c"),
+        VerticalCollectionStruct(
+            image: "amer",
+            title: "Американо",
+            infoLab: "Кофейный напиток",
+            price: "120 c"),
+        VerticalCollectionStruct(
+            image: "latte",
+            title: "Латте",
+            infoLab: "Кофейный напиток",
+            price: "100 с"),
+        VerticalCollectionStruct(
+            image: "mokko",
+            title: "Мокко",
+            infoLab: "Кофейный напиток",
+            price: "150 с"),
+        VerticalCollectionStruct(
+            image: "Raf",
+            title: "Раф",
+            infoLab: "Кофейный напиток",
+            price: "90 с"),
+        VerticalCollectionStruct(
+            image: "Fredo",
+            title: "Фредо",
+            infoLab: "Кофейный напиток",
+            price: "100 с"),
         
     ]
     
@@ -159,7 +177,7 @@ extension HomeViewController: UICollectionViewDataSource {
         if collectionView == homeCollectionViewHorizontal {
             titlesCells.count
         } else {
-            dates.count
+            products.count
         }
 
     }
@@ -176,7 +194,7 @@ extension HomeViewController: UICollectionViewDataSource {
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell2, for: indexPath) as! VerticalCollectionViewCell
-            cell.set(dates: dates[indexPath.row])
+            cell.set(dates: products[indexPath.row])
             return cell
         }
         
