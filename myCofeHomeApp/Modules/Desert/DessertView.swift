@@ -9,11 +9,17 @@ import UIKit
 
 protocol DessertViewDelegate: AnyObject {
     
+    func dessertView(_ cell: DessertView, didChangeCounterTo count: Int)
+
 }
 
 class DessertView: BaseView {
     
     var delegate: DessertViewDelegate?
+    
+    var counterChangedHandler: ((Int) -> Void)?
+    
+    private var counter = 0
     
     private let image: UIImageView = {
         let image = UIImageView()
@@ -75,7 +81,7 @@ class DessertView: BaseView {
         btn.tintColor = .white
         btn.backgroundColor = UIColor(named: "yellow")
         btn.layer.cornerRadius = 18
-        btn.addTarget(self, action: #selector(plusBtnTap), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(plusTap), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -96,7 +102,7 @@ class DessertView: BaseView {
         btn.tintColor = .black
         btn.backgroundColor = .systemGray4
         btn.layer.cornerRadius = 18
-        btn.addTarget(self, action: #selector(minusBtnTap), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(minusTap), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -150,15 +156,24 @@ class DessertView: BaseView {
             
         ])
     }
-    
-    @objc
-    private func plusBtnTap() {
-        
+    @objc private func plusTap(){
+        counter += 1
+        updateCounter()
+        print("count \(counter)")
     }
     
-    @objc
-    private func minusBtnTap() {
-        
+    @objc private func minusTap(){
+        if counter > 0 {
+            counter -= 1
+            updateCounter()
+            print("count \(counter)")
+        }
+    }
+    
+    private func updateCounter() {
+        counterLabel.text = "\(counter)"
+        delegate?.dessertView(self, didChangeCounterTo: counter)
+        counterChangedHandler?(counter)
     }
     
 }

@@ -27,8 +27,8 @@ final class UserSessionManager {
             print("Session is saved")
             let currentDate = Date()
             let thirySecondAfter = Calendar.current.date(
-                byAdding: .minute,
-                value: 2,
+                byAdding: .second,
+                value: 30,
                 to: currentDate)
             UserDefaults.standard.setValue(thirySecondAfter, forKey: "sessionDate")
         } else {

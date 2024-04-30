@@ -18,13 +18,17 @@ class DessertViewController: UIViewController {
     }
     
     private func setup(){
+        
         setupAdd()
         setupLayouts()
         setupDessertView()
+        
     }
     
-    private func setupAdd(){
+    private func setupAdd() {
+        
         view.addSubview(dessertView)
+        
     }
     
     private func setupLayouts(){

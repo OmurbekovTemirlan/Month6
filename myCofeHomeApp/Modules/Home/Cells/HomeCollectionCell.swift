@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct HomeCollectionStruct {
-    var title: String
-}
-
 class HomeCollectionCell: UICollectionViewCell {
     
    private let titleLabel: UILabel = {
@@ -48,8 +44,8 @@ class HomeCollectionCell: UICollectionViewCell {
         ])
     }
     
-    func set(data: HomeCollectionStruct) {
-        titleLabel.text = data.title
+    func fill(with item: CategoryModel) {
+        titleLabel.text = item.categoryName
     }
     
 }

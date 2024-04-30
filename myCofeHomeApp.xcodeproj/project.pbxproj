@@ -31,6 +31,14 @@
 		18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */; };
 		18B5B60E2BDBADF000D73889 /* DessertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60D2BDBADF000D73889 /* DessertView.swift */; };
 		18B5B6112BDBBB7200D73889 /* DessertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6102BDBBB7200D73889 /* DessertModel.swift */; };
+		18B5B6172BDFB2DC00D73889 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6162BDFB2DC00D73889 /* JsonParser.swift */; };
+		18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6182BDFB85100D73889 /* ProductsJson.swift */; };
+		18B5B61B2BDFBE4B00D73889 /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 18B5B61A2BDFBE4B00D73889 /* Products.json */; };
+		18B5B61E2BDFC47A00D73889 /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B61D2BDFC47A00D73889 /* CategoriesModel.swift */; };
+		18B5B6202BDFC49F00D73889 /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B61F2BDFC49F00D73889 /* ProductsModel.swift */; };
+		18B5B6282BDFD03500D73889 /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 18B5B6272BDFD03500D73889 /* Categories.json */; };
+		18B5B62A2BE0CD6C00D73889 /* Cakes.json in Resources */ = {isa = PBXBuildFile; fileRef = 18B5B6292BE0CD6C00D73889 /* Cakes.json */; };
+		18B5B62C2BE0D1A100D73889 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B62B2BE0D1A100D73889 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +68,14 @@
 		18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshViewController.swift; sourceTree = "<group>"; };
 		18B5B60D2BDBADF000D73889 /* DessertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertView.swift; sourceTree = "<group>"; };
 		18B5B6102BDBBB7200D73889 /* DessertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertModel.swift; sourceTree = "<group>"; };
+		18B5B6162BDFB2DC00D73889 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		18B5B6182BDFB85100D73889 /* ProductsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsJson.swift; sourceTree = "<group>"; };
+		18B5B61A2BDFBE4B00D73889 /* Products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
+		18B5B61D2BDFC47A00D73889 /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		18B5B61F2BDFC49F00D73889 /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
+		18B5B6272BDFD03500D73889 /* Categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
+		18B5B6292BE0CD6C00D73889 /* Cakes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Cakes.json; sourceTree = "<group>"; };
+		18B5B62B2BE0D1A100D73889 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				188DE6312BD9001D00B41403 /* BaseView.swift */,
+				18B5B62B2BE0D1A100D73889 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -175,7 +192,9 @@
 		18B5B5E92BD91FB300D73889 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */,
+				18B5B61C2BDFC43700D73889 /* DTOs */,
+				18B5B6132BDFB0B600D73889 /* JSON */,
+				18B5B6122BDFB0A900D73889 /* Services */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +268,35 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		18B5B6122BDFB0A900D73889 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */,
+				18B5B6162BDFB2DC00D73889 /* JsonParser.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		18B5B6132BDFB0B600D73889 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B6182BDFB85100D73889 /* ProductsJson.swift */,
+				18B5B61A2BDFBE4B00D73889 /* Products.json */,
+				18B5B6272BDFD03500D73889 /* Categories.json */,
+				18B5B6292BE0CD6C00D73889 /* Cakes.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		18B5B61C2BDFC43700D73889 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				18B5B61D2BDFC47A00D73889 /* CategoriesModel.swift */,
+				18B5B61F2BDFC49F00D73889 /* ProductsModel.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -308,7 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				188DE61C2BD8497600B41403 /* LaunchScreen.storyboard in Resources */,
+				18B5B6282BDFD03500D73889 /* Categories.json in Resources */,
+				18B5B62A2BE0CD6C00D73889 /* Cakes.json in Resources */,
 				188DE6192BD8497600B41403 /* Assets.xcassets in Resources */,
+				18B5B61B2BDFBE4B00D73889 /* Products.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,16 +370,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B5B61E2BDFC47A00D73889 /* CategoriesModel.swift in Sources */,
 				18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */,
 				188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */,
 				18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */,
 				18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */,
+				18B5B62C2BE0D1A100D73889 /* BaseViewController.swift in Sources */,
 				18B5B6112BDBBB7200D73889 /* DessertModel.swift in Sources */,
 				18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */,
 				18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */,
 				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
 				18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */,
 				18B5B5ED2BD9212400D73889 /* AuthoModel.swift in Sources */,
+				18B5B6202BDFC49F00D73889 /* ProductsModel.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
@@ -338,8 +392,10 @@
 				18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */,
 				18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */,
 				18B5B60E2BDBADF000D73889 /* DessertView.swift in Sources */,
+				18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */,
 				18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */,
 				18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */,
+				18B5B6172BDFB2DC00D73889 /* JsonParser.swift in Sources */,
 				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,13 +7,6 @@
 
 import UIKit
 
-struct VerticalCollectionStruct {
-    var image: String
-    var title: String
-    var infoLab: String
-    var price: String
-}
-
 protocol VerticalCollectionViewCellDelegate: AnyObject {
     
     func verticalCollectionViewCell(_ cell: VerticalCollectionViewCell, didChangeCounterTo count: Int)
@@ -179,11 +172,10 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         counterChangedHandler?(counter)
     }
     
-    func set(dates: VerticalCollectionStruct) {
-        images.image = UIImage(named: dates.image)
-        titleLabel.text = dates.title
-        infoLabel.text = dates.infoLab
-        priceLabel.text = dates.price
+    func fill(with item: Products.ProductsModel) {
+        images.image = UIImage(named: item.image)
+        titleLabel.text = item.title
+        infoLabel.text = item.infoLab
+        priceLabel.text = "\(item.price) c"
     }
-    
 }

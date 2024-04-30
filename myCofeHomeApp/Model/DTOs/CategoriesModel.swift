@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Category: Decodable {
+    let categories: [CategoryModel]
+}
+
+struct CategoryModel: Decodable {
+    let categoryName: String
+}
