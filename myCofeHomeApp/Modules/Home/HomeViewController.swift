@@ -10,7 +10,8 @@ import UIKit
 class HomeViewController: BaseViewController {
     
     private var selectedHorizontalIndex: Int?
-    private var selectedVerticalIndex: Int?
+    
+    private var selectedProduct: ProductsMeals.Meal?
     
     private var counter = 0
     
@@ -19,14 +20,30 @@ class HomeViewController: BaseViewController {
     
     private let parser = JsonParser()
     
-    private var  categories: [CategoryModel] = []
+    private let networkService = NetworkService()
     
-    private var products: [Products.ProductsModel] = []
+    private var  categoriess: [ProductsCategories.ProductCategory] = []
     
-//    private var cakes: [Products.ProductsModel] = []
+    private var products: [ProductsMeals.Meal] = []
+    
+    private let searchBar: UISearchTextField = {
+        let view = UISearchTextField()
+        view.placeholder = "Поиск"
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.systemGray3.cgColor
+        view.layer.cornerRadius = 13
+        view.backgroundColor = UIColor.clear
+//        view.addTarget(self, action: #selector(searchBarEditing), for: .editingChanged)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let homeCollectionViewHorizontal: UICollectionView = {
         let loyaut = UICollectionViewFlowLayout()
+        loyaut.itemSize = CGSize(width: 100, height: 30)
+        loyaut.minimumLineSpacing = 20
+        loyaut.minimumInteritemSpacing = 10
+        loyaut.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         loyaut.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: loyaut)
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +62,10 @@ class HomeViewController: BaseViewController {
     
     private let homeCollectionViewVertical: UICollectionView = {
         let loyaut = UICollectionViewFlowLayout()
+        loyaut.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: 120)
+        loyaut.minimumLineSpacing = 10
+        loyaut.minimumInteritemSpacing = 15
+        loyaut.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         loyaut.scrollDirection = .vertical
         let collection = UICollectionView(frame: .zero, collectionViewLayout: loyaut)
         collection.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +77,10 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        
         setup()
+        getCategoriesNet()
+        defaultScreen()
         
     }
     
@@ -66,24 +90,27 @@ class HomeViewController: BaseViewController {
         setupLayouts()
         setupCollection()
         setupCollectionCounter()
-        getCategories()
-        defaultScreen()
-//        getProducts()
-       // getCakes()
     }
     
     override func setupAdd(){
         super.setupAdd()
+        view.addSubview(searchBar)
         view.addSubview(homeCollectionViewHorizontal)
         view.addSubview(titleCategory)
         view.addSubview(homeCollectionViewVertical)
+        
     }
     
     override func setupLayouts(){
         super.setupLayouts()
         NSLayoutConstraint.activate([
             
-            homeCollectionViewHorizontal.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            searchBar.heightAnchor.constraint(equalToConstant: 40),
+            
+            homeCollectionViewHorizontal.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             homeCollectionViewHorizontal.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             homeCollectionViewHorizontal.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             homeCollectionViewHorizontal.heightAnchor.constraint(equalToConstant: 60),
@@ -111,95 +138,81 @@ class HomeViewController: BaseViewController {
         
     }
     
-    private func getCategories(){
-        
-        guard let path = Bundle.main.path(
-            forResource: "Categories",
-            ofType: "json"), case let url = URL(fileURLWithPath: path), let data = try? Data(contentsOf: url) else { return }
-        
-        parser.getItems(from: data) {[weak self] (result: Result<Category, JsonParser.CostumError>) in guard let self else { return }
-            switch result {
-            case .success(let model):
-                self.categories = model.categories
-                homeCollectionViewHorizontal.reloadData()
-            case .failure(let failure):
-                showAlert(title: "ошибка", massage: failure.localizedDescription)
-            }
-        }
-        
-    }
-
-    
-        private func getProducts(){
-    
-            guard let path = Bundle.main.path(
-                forResource: "Products",
-                ofType: "json"), case let url = URL(fileURLWithPath: path), let data = try? Data(contentsOf: url) else { return }
-    
-            parser.getItems(from: data) {[weak self] (result: Result<Products, JsonParser.CostumError>) in guard let self else { return }
+    private func getCategoriesNet() {
+        networkService.getCategories { [weak self] result in
+            DispatchQueue.main.async { [weak self] in guard let self else { return }
                 switch result {
                 case .success(let model):
-                    self.products = model.products
-                    homeCollectionViewVertical.reloadData()
-                case .failure(let failure):
-                    showAlert(title: "ошибка", massage: failure.rawValue)
+                    self.categoriess = model
+                    self.homeCollectionViewHorizontal.reloadData()
+                case .failure(let error):
+                    showAlert(title: "error", massage: error.localizedDescription)
+                    print("\(error.localizedDescription)")
                 }
             }
         }
+    }
     
-    private func getCakes(){
-        
-        guard let path = Bundle.main.path(
-            forResource: "Cakes",
-            ofType: "json"), case let url = URL(fileURLWithPath: path), let data = try? Data(contentsOf: url) else { return }
-        
-        
-        parser.getItems(from: data) {[weak self] (result: Result<Products, JsonParser.CostumError>) in guard let self else { return }
-            switch result {
-            case .success(let model):
-                self.products = model.products
-                homeCollectionViewVertical.reloadData()
-            case .failure(let failure):
-                showAlert(title: "ошибка", massage: failure.rawValue)
-            }
-        }
-}
-    
-    private func defaultScreen(){
-        selectedHorizontalIndex = 0
-            
-            // Обновление данных в homeCollectionViewVertical при загрузке
-            if let selectedCategory = categories.first?.categoryName {
-                updateDataForVerticalCollectionView(with: selectedCategory)
-            }
-        }
-    
-
-
-private func setupCollectionCounter() {
-    
-    if let visibleCells = homeCollectionViewVertical.visibleCells as? [VerticalCollectionViewCell] {
-        
-        for cell in visibleCells {
-            
-            cell.counterChangedHandler = { [weak self] count in
-                
-                self?.counter = count
-                
+    private func getProductsNet(forCategory category: String) {
+        networkService.getProducts(with: category) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in guard let self = self else { return }
+                switch result {
+                case .success(let model):
+                    self.products = model
+                    self.homeCollectionViewVertical.reloadData()
+                case .failure(let error):
+                    showAlert(title: "Error", massage: error.localizedDescription)
+                }
             }
         }
     }
-}
 
-private func navigateToDessertsScreen() {
-    let dessertsVC = DessertViewController()
-    navigationController?.pushViewController(dessertsVC, animated: true)
-}
 
-@objc
-private func belsBtnTap() {
+    private func defaultScreen(){
+        
+        selectedHorizontalIndex = 1
+        
+        if let selectedCategory = categoriess.first?.strCategory {
+            updateDataForVerticalCollectionView(with: selectedCategory)
+            
+        }
+    }
     
-}
+    private func updateDataForVerticalCollectionView(with categoryName: String) {
+        
+      
+            getProductsNet(forCategory: categoryName)
+            homeCollectionViewVertical.reloadData()
+       
+    }
+    
+    private func setupCollectionCounter() {
+        
+        if let visibleCells = homeCollectionViewVertical.visibleCells as? [VerticalCollectionViewCell] {
+            
+            for cell in visibleCells {
+                
+                cell.counterChangedHandler = { [weak self] count in
+                    
+                    self?.counter = count
+                    
+                }
+            }
+        }
+    }
+    
+    private func navigateToDessertsScreen(with product: ProductsMeals.Meal) {
+        
+        let dessertsVC = DessertViewController()
+        dessertsVC.selectedProduct = selectedProduct
+        navigationController?.pushViewController(dessertsVC, animated: true)
+        
+    }
+    
+    @objc
+    private func belsBtnTap() {
+        
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -207,7 +220,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == homeCollectionViewHorizontal {
-            categories.count
+            categoriess.count
         } else {
             products.count
         }
@@ -219,9 +232,8 @@ extension HomeViewController: UICollectionViewDataSource {
         if collectionView == homeCollectionViewHorizontal {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell, for: indexPath) as! HomeCollectionCell
-            cell.fill(with: categories[indexPath.row])
+            cell.fill(with: categoriess[indexPath.row])
             cell.backgroundColor = (indexPath.item == selectedHorizontalIndex) ? UIColor(named: "ColorItems") : .clear
-            cell.layer.cornerRadius = 13
             return cell
             
         } else {
@@ -240,7 +252,7 @@ extension HomeViewController: UICollectionViewDelegate {
         
         if collectionView == homeCollectionViewHorizontal {
             
-            let selectedCategory = categories[indexPath.row].categoryName
+            let selectedCategory = categoriess[indexPath.row].strCategory
             
             updateDataForVerticalCollectionView(with: selectedCategory)
             
@@ -249,67 +261,11 @@ extension HomeViewController: UICollectionViewDelegate {
             homeCollectionViewHorizontal.reloadData()
             
         } else {
-            if indexPath.item == 1 {
-                navigateToDessertsScreen()
-            }
-        }
-    }
-    
-    private func updateDataForVerticalCollectionView(with categoryName: String) {
-        
-        if categoryName == "Кофе" {
-            getProducts()
-            homeCollectionViewVertical.reloadData()
-        }
-        if categoryName == "Торты" {
-            getCakes()
-            homeCollectionViewVertical.reloadData()
-        }
-    }
-    
-}
+                
+            selectedProduct = products[indexPath.row]
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if collectionView == homeCollectionViewHorizontal {
-            return CGSize(width: 100, height: 30)
-        } else {
-            return CGSize(width: (UIScreen.main.bounds.width), height: 120)
+            navigateToDessertsScreen(with: selectedProduct!)
+                
         }
-        
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-        if collectionView == homeCollectionViewHorizontal {
-            return 10
-        } else {
-            return 15
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        if collectionView == homeCollectionViewHorizontal {
-            return 20
-        } else {
-            return 10
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        if collectionView == homeCollectionViewHorizontal {
-            return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        } else {
-            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-        }
-        
-    }
-    
 }
-

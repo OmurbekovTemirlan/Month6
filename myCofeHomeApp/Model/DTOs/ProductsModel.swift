@@ -6,15 +6,15 @@
 //
 
 import Foundation
-
-struct Products: Decodable {
-    
-    let products: [ProductsModel]
-    
-    struct ProductsModel: Decodable {
-        let image: String
-        let title: String
-        let infoLab: String
-        let price: Int
-    }
-}
+//
+//struct Products: Decodable {
+//    
+//    let products: [ProductsModel]
+//    
+//    struct ProductsModel: Decodable {
+//        let image: String?
+//        let title: String?
+//        let infoLab: String?
+//        let price: Int?
+//    }
+//}

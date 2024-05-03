@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct ProductsMeals: Decodable {
+    
+    let meals: [Meal]
+    
+    struct Meal: Decodable {
+        let idMeal: String?
+        let strMeal: String!
+        let strMealThumb: String!
+        let strArea: String!
+    }
+}

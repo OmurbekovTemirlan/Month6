@@ -102,10 +102,12 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
+    private var imageURL: URL?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        
+       
     }
     
     required init?(coder: NSCoder) {
@@ -136,14 +138,15 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             
             images.centerYAnchor.constraint(equalTo: centerYAnchor),
-            images.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            images.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             images.heightAnchor.constraint(equalToConstant: 100),
             images.widthAnchor.constraint(equalToConstant: 100),
             
             vStac.centerYAnchor.constraint(equalTo: centerYAnchor),
-            vStac.leadingAnchor.constraint(equalTo: images.trailingAnchor,constant: 15),
+            vStac.leadingAnchor.constraint(equalTo: images.trailingAnchor,constant: 10),
             vStac.heightAnchor.constraint(equalToConstant: 90),
-            vStac.widthAnchor.constraint(equalToConstant: 135),
+            vStac.widthAnchor.constraint(equalToConstant: 170),
+            
             
             hStac.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
             hStac.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
@@ -172,10 +175,31 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         counterChangedHandler?(counter)
     }
     
-    func fill(with item: Products.ProductsModel) {
-        images.image = UIImage(named: item.image)
-        titleLabel.text = item.title
-        infoLabel.text = item.infoLab
-        priceLabel.text = "\(item.price) c"
+    func fill(with item: ProductsMeals.Meal) {
+        titleLabel.text = item.strMeal!
+        priceLabel.text = "\(item.idMeal!) c"
+
+        
+        if let imageURL = URL(string: item.strMealThumb ?? "") {
+            self.imageURL = imageURL
+            loadImage()
+            
+        }
+    }
+    
+    private func loadImage(){
+        
+        guard let imageURL = imageURL else {return}
+        
+        let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
+            guard let data = data, let image = UIImage(data: data) else {
+                print("Ошибка загрузки изображения:", error?.localizedDescription ?? "Unknown error")
+                return
+            }
+            DispatchQueue.main.async {
+                self.images.image = image
+            }
+        }
+        task.resume()
     }
 }

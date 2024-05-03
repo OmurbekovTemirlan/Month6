@@ -12,7 +12,7 @@ class HomeCollectionCell: UICollectionViewCell {
    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .systemGray3
+        label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,6 +21,7 @@ class HomeCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         setup()
         
+        layer.cornerRadius = 13
         self.isUserInteractionEnabled = true
     }
     
@@ -44,8 +45,8 @@ class HomeCollectionCell: UICollectionViewCell {
         ])
     }
     
-    func fill(with item: CategoryModel) {
-        titleLabel.text = item.categoryName
+    func fill(with item: ProductsCategories.ProductCategory) {
+        titleLabel.text = item.strCategory
     }
     
 }

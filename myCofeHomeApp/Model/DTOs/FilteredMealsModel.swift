@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct FilteredMeals: Decodable {
+    
+    let meals: [FilterMeal]
+    
+    struct FilterMeal: Decodable {
+        let idMeal: String?
+        let strMeal: String!
+        let strMealThumb: String!
+        
+    }
+}

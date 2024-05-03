@@ -15,10 +15,14 @@ class SpalshViewController: UIViewController {
       
         if UserSessionManager.shared.isSessionActive {
             let vc = TabBarViewController()
-            navigationController?.pushViewController(vc, animated: true)
+    
+            navigationController?.pushViewController(vc, animated: false)
+            
         } else {
             let vc = AuthorizationViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            
+            navigationController?.pushViewController(vc, animated: false)
+            
         }
         
     }

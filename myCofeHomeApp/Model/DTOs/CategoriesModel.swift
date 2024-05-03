@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct Category: Decodable {
-    let categories: [CategoryModel]
+struct CategoriesModel: Decodable {
+    let categories: [Category]
+    
+    struct Category: Decodable {
+        let categoryName: String
+    }
 }
 
-struct CategoryModel: Decodable {
-    let categoryName: String
-}
+
+
+

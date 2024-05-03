@@ -15,11 +15,21 @@ protocol DessertViewDelegate: AnyObject {
 
 class DessertView: BaseView {
     
-    var delegate: DessertViewDelegate?
+    private var products: [ProductsMeals.Meal] = []
+    
+    private let parser = JsonParser()
+    
+   weak var delegate: DessertViewDelegate?
+    
+    private let networkService = NetworkService()
     
     var counterChangedHandler: ((Int) -> Void)?
     
     private var counter = 0
+    
+    var selectedProduct: ProductsMeals.Meal?
+    
+    private let idCell3 = "cell3"
     
     private let hStacForLabels: UIStackView = {
         let stac = UIStackView()
@@ -32,7 +42,7 @@ class DessertView: BaseView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Эспрессо"
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +52,7 @@ class DessertView: BaseView {
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.text = "100 c"
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor(named: "yellow")
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,11 +61,11 @@ class DessertView: BaseView {
     
     private let infoLabel: UILabel = {
         let label = UILabel()
-        label.text = "Брауни - шоколадное пирожное коричневого цвета прямоугольные куски нарезанного шоколадный пирожный"
+        label.text = "123456789"
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.textColor = .black
         label.textAlignment = .left
-        label.numberOfLines = 3
+        label.numberOfLines = 4
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -99,6 +109,29 @@ class DessertView: BaseView {
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+    
+    private let recommendedProductLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Приятное дополнение"
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let recommendedProductsCollectionView: UICollectionView = {
+        let loyaut = UICollectionViewFlowLayout()
+        loyaut.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: 120)
+        loyaut.minimumLineSpacing = 10
+        loyaut.minimumInteritemSpacing = 15
+        loyaut.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        loyaut.scrollDirection = .vertical
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: loyaut)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.backgroundColor = .systemBackground
+        return collection
+    }()
 
     
     override func setup(){
@@ -107,6 +140,9 @@ class DessertView: BaseView {
         
         setupAdd()
         setupLayouts()
+        setupCollection()
+        setupData()
+        
         
         layer.cornerRadius = 25
     }
@@ -122,6 +158,8 @@ class DessertView: BaseView {
         hStac.addArrangedSubview(minusBtn)
         hStac.addArrangedSubview(counterLabel)
         hStac.addArrangedSubview(plusBtn)
+        addSubview(recommendedProductsCollectionView)
+        addSubview(recommendedProductLabel)
     }
     
     override func setupLayouts(){
@@ -130,20 +168,58 @@ class DessertView: BaseView {
         NSLayoutConstraint.activate([
             
             hStacForLabels.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-            hStacForLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            hStacForLabels.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            hStacForLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            hStacForLabels.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             hStacForLabels.heightAnchor.constraint(equalToConstant: 30),
            
             infoLabel.topAnchor.constraint(equalTo: hStacForLabels.bottomAnchor, constant: 10),
             infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            infoLabel.trailingAnchor.constraint(equalTo: hStac.leadingAnchor, constant: -10),
             
-            hStac.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 10),
+            hStac.topAnchor.constraint(equalTo: hStacForLabels.bottomAnchor, constant: 10),
             hStac.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             hStac.heightAnchor.constraint(equalToConstant: 36),
             hStac.widthAnchor.constraint(equalToConstant: 110),
             
+            recommendedProductLabel.topAnchor.constraint(equalTo: hStac.bottomAnchor, constant: 10),
+            recommendedProductLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            
+            recommendedProductsCollectionView.topAnchor.constraint(equalTo: recommendedProductLabel.bottomAnchor, constant: 10),
+            recommendedProductsCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            recommendedProductsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            recommendedProductsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+    
+    private func setupCollection() {
+        
+        recommendedProductsCollectionView.dataSource = self
+        recommendedProductsCollectionView.register(DessertCollectionCell.self, forCellWithReuseIdentifier: idCell3)
+        
+    }
+    
+    private func getProducts(Category: String) {
+        networkService.getProducts(with: Category) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in guard let self = self else { return }
+                switch result {
+                case .success(let model):
+                    self.products = model
+                    self.recommendedProductsCollectionView.reloadData()
+                case .failure(let error):
+                    showAlert(title: "Error", message: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+     func setupData() {
+         
+         if let product = selectedProduct {
+             titleLabel.text = product.strMeal
+             priceLabel.text = "\(String(describing: product.idMeal ?? "")) c"
+             infoLabel.text = product.strArea ?? "No area provided"
+             getProducts(Category: product.idMeal ?? "53071")
+         }
     }
     
     @objc private func plusTap() {
@@ -166,4 +242,29 @@ class DessertView: BaseView {
         counterChangedHandler?(counter)
     }
     
+}
+
+extension DessertView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        products.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell3, for: indexPath) as! DessertCollectionCell
+        cell.fill(with: products[indexPath.row])
+        return cell
+    }
+}
+
+extension UIView {
+    func showAlert(title: String, message: String) {
+        if let viewController = self.next as? UIViewController {
+            let alert = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive))
+            viewController.present(alert, animated: true)
+        }
+    }
 }
