@@ -21,13 +21,6 @@ class DessertView: BaseView {
     
     private var counter = 0
     
-    private let image: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "espesso")
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
     private let hStacForLabels: UIStackView = {
         let stac = UIStackView()
         stac.axis = .horizontal
@@ -110,16 +103,17 @@ class DessertView: BaseView {
     
     override func setup(){
         super.setup()
+        backgroundColor = .white
         
         setupAdd()
         setupLayouts()
         
+        layer.cornerRadius = 25
     }
     
     override func setupAdd(){
         super.setupAdd()
         
-        addSubview(image)
         addSubview(hStacForLabels)
         hStacForLabels.addArrangedSubview(titleLabel)
         hStacForLabels.addArrangedSubview(priceLabel)
@@ -135,12 +129,7 @@ class DessertView: BaseView {
         
         NSLayoutConstraint.activate([
             
-            image.topAnchor.constraint(equalTo: topAnchor, constant: 60),
-            image.leadingAnchor.constraint(equalTo: leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: trailingAnchor),
-            image.heightAnchor.constraint(equalToConstant: 300),
-            
-            hStacForLabels.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10),
+            hStacForLabels.topAnchor.constraint(equalTo: topAnchor, constant: 15),
             hStacForLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             hStacForLabels.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             hStacForLabels.heightAnchor.constraint(equalToConstant: 30),
@@ -156,13 +145,14 @@ class DessertView: BaseView {
             
         ])
     }
-    @objc private func plusTap(){
+    
+    @objc private func plusTap() {
         counter += 1
         updateCounter()
         print("count \(counter)")
     }
     
-    @objc private func minusTap(){
+    @objc private func minusTap() {
         if counter > 0 {
             counter -= 1
             updateCounter()
