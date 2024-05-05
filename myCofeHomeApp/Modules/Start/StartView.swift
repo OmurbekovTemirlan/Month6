@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol StartViewDelegate: AnyObject {
-    func toComeIn()
-}
-
 class StartView: BaseView {
-    
-    weak var delegate: StartViewDelegate?
     
     private let titleRestourant: UILabel = {
         let label = UILabel()
@@ -33,7 +27,7 @@ class StartView: BaseView {
         return label
     }()
     
-    private let toComeInBtn: UIButton = {
+    private let signInBtn: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -43,7 +37,7 @@ class StartView: BaseView {
         return button
     }()
     
-    private let signInBtn: UIButton = {
+    private let registerBtn: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Регистрация", for: .normal)
         button.setTitleColor(.systemGray, for: .normal)
@@ -53,12 +47,14 @@ class StartView: BaseView {
         return button
     }()
     
+    weak var delegate: StartViewDelegate?
+    
     override func setup(){
         super.setup()
         setupAdd()
         setupLayouts()
         
-        toComeInBtn.addTarget(self, action: #selector(toComeInTap), for: .touchUpInside)
+        signInBtn.addTarget(self, action: #selector(toComeInTap), for: .touchUpInside)
         
     }
     
@@ -66,8 +62,8 @@ class StartView: BaseView {
         super.setupAdd()
         addSubview(titleRestourant)
         addSubview(titleLabel)
-        addSubview(toComeInBtn)
         addSubview(signInBtn)
+        addSubview(registerBtn)
     }
     
     override func setupLayouts(){
@@ -81,18 +77,18 @@ class StartView: BaseView {
             titleLabel.topAnchor.constraint(equalTo: titleRestourant.bottomAnchor, constant: 3),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            toComeInBtn.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            toComeInBtn.centerXAnchor.constraint(equalTo: centerXAnchor),
-            toComeInBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            toComeInBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            toComeInBtn.heightAnchor.constraint(equalToConstant: 40),
-            
-            
-            signInBtn.topAnchor.constraint(equalTo: toComeInBtn.bottomAnchor, constant: 20),
+            signInBtn.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             signInBtn.centerXAnchor.constraint(equalTo: centerXAnchor),
             signInBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             signInBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             signInBtn.heightAnchor.constraint(equalToConstant: 40),
+            
+            
+            registerBtn.topAnchor.constraint(equalTo: signInBtn.bottomAnchor, constant: 20),
+            registerBtn.centerXAnchor.constraint(equalTo: centerXAnchor),
+            registerBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            registerBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            registerBtn.heightAnchor.constraint(equalToConstant: 40),
             
         ])
         
@@ -100,9 +96,6 @@ class StartView: BaseView {
     
     @objc
     private func toComeInTap(){
-        
-        delegate?.toComeIn()
-        
+        delegate?.signIn()
     }
-    
 }

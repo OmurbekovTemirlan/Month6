@@ -7,7 +7,12 @@
   
 import UIKit
 
-class AuthorizationViewController: UIViewController {
+protocol AuthoViewDelegate: AnyObject {
+    func isvalidateTF(text: UITextField)
+    func signIn()
+}
+
+class AuthorizationViewController: BaseViewController {
     
     private let authoView = AuthoView()
     
@@ -22,7 +27,8 @@ class AuthorizationViewController: UIViewController {
         setup()
     }
 
-    private func setup(){
+    override func setup(){
+        super.setup()
         setupAdd()
         setupLayouts()
         
@@ -31,11 +37,13 @@ class AuthorizationViewController: UIViewController {
         
     }
     
-    private func setupAdd(){
+    override func setupAdd(){
+        super.setupAdd()
         view.addSubview(authoView)
     }
     
-    private func setupLayouts(){
+    override func setupLayouts(){
+        super.setupLayouts()
         NSLayoutConstraint.activate([
             authoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
             authoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -46,20 +54,15 @@ class AuthorizationViewController: UIViewController {
 }
 
 extension AuthorizationViewController: AuthoViewDelegate {
-    
-    func toComeIn(with model: AuthoModel) {
-        if sessionManager.isValid(phoneNumber: model.phoneNumber) {
-           sessionManager.saveSession(phoneNumber: model.phoneNumber)
-        let vc = TabBarViewController()
-            
-            navigationController?.pushViewController(vc, animated: true)
+    func isvalidateTF(text: UITextField) {
+        guard let phoneNumber = text.text else { return }
+        if sessionManager.isValid(phoneNumber: phoneNumber){
+            sessionManager.saveSession(phoneNumber: phoneNumber)
         }
     }
     
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+    func signIn() {
+            let vc = SmsViewConroller()
+                navigationController?.pushViewController(vc, animated: true)
     }
-   
 }

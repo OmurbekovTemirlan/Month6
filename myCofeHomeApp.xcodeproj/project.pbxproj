@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		10B00DF9F56209CA8FDF3DFD /* Pods_myCofeHomeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3431D9FA5FA408A7F2923139 /* Pods_myCofeHomeApp.framework */; };
 		1853DB3E2BE54131001E9D2C /* LoadImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */; };
+		1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */; };
+		1853DB642BE81D3D001E9D2C /* SmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB632BE81D3D001E9D2C /* SmsView.swift */; };
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
 		188DE6192BD8497600B41403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6182BD8497600B41403 /* Assets.xcassets */; };
@@ -20,7 +22,6 @@
 		188DE6322BD9001D00B41403 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6312BD9001D00B41403 /* BaseView.swift */; };
 		18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5E72BD9187700D73889 /* HomeViewController.swift */; };
 		18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */; };
-		18B5B5ED2BD9212400D73889 /* AuthoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EC2BD9212400D73889 /* AuthoModel.swift */; };
 		18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */; };
 		18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F52BD9416200D73889 /* BascetViewController.swift */; };
 		18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F92BD9419900D73889 /* CatalogViewController.swift */; };
@@ -46,6 +47,8 @@
 
 /* Begin PBXFileReference section */
 		1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadImage + extension.swift"; sourceTree = "<group>"; };
+		1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewConroller.swift; sourceTree = "<group>"; };
+		1853DB632BE81D3D001E9D2C /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
 		188DE60C2BD8497300B41403 /* myCofeHomeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCofeHomeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188DE60F2BD8497300B41403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188DE6112BD8497300B41403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +62,6 @@
 		188DE6312BD9001D00B41403 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		18B5B5E72BD9187700D73889 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
-		18B5B5EC2BD9212400D73889 /* AuthoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoModel.swift; sourceTree = "<group>"; };
 		18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		18B5B5F52BD9416200D73889 /* BascetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BascetViewController.swift; sourceTree = "<group>"; };
 		18B5B5F92BD9419900D73889 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		1853DB602BE81CA5001E9D2C /* SMSCode */ = {
+			isa = PBXGroup;
+			children = (
+				1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */,
+				1853DB632BE81D3D001E9D2C /* SmsView.swift */,
+			);
+			path = SMSCode;
+			sourceTree = "<group>";
+		};
 		188DE6032BD8497300B41403 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +171,7 @@
 				18B5B60A2BDBABD700D73889 /* Splash */,
 				188DE6262BD849EC00B41403 /* Start */,
 				188DE62B2BD852A300B41403 /* Authorization */,
+				1853DB602BE81CA5001E9D2C /* SMSCode */,
 				18B5B5EE2BD93E4E00D73889 /* TabBar */,
 				18B5B5E62BD9184700D73889 /* Home */,
 				18B5B5F12BD9401200D73889 /* Bascet */,
@@ -194,7 +206,6 @@
 			children = (
 				188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */,
 				188DE62E2BD8544800B41403 /* AuthoView.swift */,
-				18B5B5EC2BD9212400D73889 /* AuthoModel.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -348,7 +359,6 @@
 				91ED7DDDB474C2BE0D2E3B46 /* Pods-myCofeHomeApp.debug.xcconfig */,
 				9D7EDE43942C3970B2070A1B /* Pods-myCofeHomeApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -471,6 +481,7 @@
 			files = (
 				18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */,
 				188DE62F2BD8544800B41403 /* AuthoView.swift in Sources */,
+				1853DB642BE81D3D001E9D2C /* SmsView.swift in Sources */,
 				18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */,
 				18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */,
 				18B5B62C2BE0D1A100D73889 /* BaseViewController.swift in Sources */,
@@ -478,8 +489,8 @@
 				18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */,
 				18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */,
 				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
+				1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */,
 				18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */,
-				18B5B5ED2BD9212400D73889 /* AuthoModel.swift in Sources */,
 				18B5B6382BE363AB00D73889 /* ProductsMeals.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,

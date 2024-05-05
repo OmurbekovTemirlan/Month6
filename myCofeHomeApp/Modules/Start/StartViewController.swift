@@ -6,6 +6,11 @@
 //
 
 import UIKit
+
+protocol StartViewDelegate: AnyObject {
+    func signIn()
+}
+
  
 class StartViewController: UIViewController {
     
@@ -50,7 +55,7 @@ class StartViewController: UIViewController {
 }
 
 extension StartViewController: StartViewDelegate {
-    func toComeIn() {
+    func signIn() {
         
         let vc = AuthorizationViewController()
         

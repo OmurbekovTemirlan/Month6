@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol AuthoViewDelegate: AnyObject {
-    func toComeIn(with model: AuthoModel)
-}
-
 class AuthoView: BaseView {
     
-    weak var delegate: AuthoViewDelegate?
+    
 
     private let titleRestourant: UILabel = {
         let label = UILabel()
@@ -33,7 +29,7 @@ class AuthoView: BaseView {
         return label
     }()
     
-    private let toComeLabel: UILabel = {
+    private let singInLabel: UILabel = {
         let label = UILabel()
         label.text = "Вход"
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -55,7 +51,7 @@ class AuthoView: BaseView {
         return tf
     }()
     
-    private let toComeInBtn: UIButton = {
+    private let signInBtn: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -65,19 +61,23 @@ class AuthoView: BaseView {
         return button
     }()
     
+    weak var delegate: AuthoViewDelegate?
+    
     override func setup(){
         super.setup()
        
-        toComeInBtn.addTarget(self, action: #selector(toComeInTap), for: .touchUpInside)
+        phoneNumber.addTarget(self, action: #selector(validateCountTf), for: .editingChanged)
+        signInBtn.addTarget(self, action: #selector(signInTap), for: .touchUpInside)
+        
     }
     
     override func setupAdd(){
         super.setupAdd()
         addSubview(titleRestourant)
         addSubview(titleLabel)
-        addSubview(toComeLabel)
+        addSubview(singInLabel)
         addSubview(phoneNumber)
-        addSubview(toComeInBtn)
+        addSubview(signInBtn)
     }
     
     override func setupLayouts(){
@@ -91,26 +91,32 @@ class AuthoView: BaseView {
             titleLabel.topAnchor.constraint(equalTo: titleRestourant.bottomAnchor, constant: 3),
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
       
-            toComeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            toComeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            singInLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            singInLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            phoneNumber.topAnchor.constraint(equalTo: toComeLabel.bottomAnchor, constant: 20),
+            phoneNumber.topAnchor.constraint(equalTo: singInLabel.bottomAnchor, constant: 20),
             phoneNumber.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             phoneNumber.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             phoneNumber.heightAnchor.constraint(equalToConstant: 50),
             
-            toComeInBtn.topAnchor.constraint(equalTo: phoneNumber.bottomAnchor, constant: 20),
-            toComeInBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            toComeInBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            toComeInBtn.heightAnchor.constraint(equalToConstant: 50),
+            signInBtn.topAnchor.constraint(equalTo: phoneNumber.bottomAnchor, constant: 20),
+            signInBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            signInBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            signInBtn.heightAnchor.constraint(equalToConstant: 50),
             
         ])
     }
     
     @objc
-    private func toComeInTap(){
-        let model = AuthoModel(phoneNumber: phoneNumber.text ?? "")
-        
-        delegate?.toComeIn(with: model)
+    private func signInTap(){
+        delegate?.signIn()
+    }
+    
+    @objc
+    private func validateCountTf(_ text: UITextField){
+        guard let phoneNumber = text.text else { return }
+        if phoneNumber.count == 9 {
+            delegate?.isvalidateTF(text: text)
+        }
     }
 }

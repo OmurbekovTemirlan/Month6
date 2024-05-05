@@ -37,11 +37,9 @@ final class UserSessionManager {
     }
     
     func isValid(phoneNumber: String) -> Bool {
-       
         let phoneNumberWithoutSpaces = phoneNumber.replacingOccurrences(of: " ", with: "")
         let phoneNumber = "502030422"
         return phoneNumber == "502030422" && phoneNumberWithoutSpaces.count == 9 && phoneNumberWithoutSpaces.allSatisfy { $0.isNumber }
        
     }
-    
 }
