@@ -1,28 +1,27 @@
 //
-//  VerticalCollectionViewCell.swift
+//  DessertCollectionCell.swift
 //  myCofeHomeApp
 //
-//  Created by Apple on 25.4.2024.
+//  Created by Apple on 1.5.2024.
 //
 
 import UIKit
 
-protocol VerticalCollectionViewCellDelegate: AnyObject {
+protocol DessertCollectionDelegate: AnyObject {
     
-    func verticalCollectionViewCell(_ cell: VerticalCollectionViewCell, didChangeCounterTo count: Int)
+    func dessertCell(_ cell: DessertCollectionCell, didChangeCounterTo count: Int)
     
 }
 
-
-class VerticalCollectionViewCell: UICollectionViewCell {
+class DessertCollectionCell: UICollectionViewCell {
     
-    weak var delegate: VerticalCollectionViewCellDelegate?
+    weak var delegate: DessertCollectionDelegate?
     
     var counterChangedHandler: ((Int) -> Void)?
     
     private var counter = 0
     
-    static let reusId = "cell1"
+    private var imageURL: URL?
     
     private let images: UIImageView = {
         let image = UIImageView()
@@ -40,7 +39,7 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         return stac
     }()
     
-   private let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
@@ -49,20 +48,20 @@ class VerticalCollectionViewCell: UICollectionViewCell {
     }()
     
     private let infoLabel: UILabel = {
-         let label = UILabel()
-         label.font = .systemFont(ofSize: 14, weight: .regular)
-         label.textColor = .black
-         label.translatesAutoresizingMaskIntoConstraints = false
-         return label
-     }()
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private let priceLabel: UILabel = {
-         let label = UILabel()
-         label.font = .systemFont(ofSize: 16, weight: .bold)
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = UIColor(named: "yellow")
-         label.translatesAutoresizingMaskIntoConstraints = false
-         return label
-     }()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private let hStac: UIStackView = {
         let stac = UIStackView()
@@ -104,12 +103,10 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
-    private var imageURL: URL?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-       
+        
     }
     
     required init?(coder: NSCoder) {
@@ -140,15 +137,14 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             
             images.centerYAnchor.constraint(equalTo: centerYAnchor),
-            images.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            images.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             images.heightAnchor.constraint(equalToConstant: 100),
             images.widthAnchor.constraint(equalToConstant: 100),
             
             vStac.centerYAnchor.constraint(equalTo: centerYAnchor),
-            vStac.leadingAnchor.constraint(equalTo: images.trailingAnchor,constant: 10),
+            vStac.leadingAnchor.constraint(equalTo: images.trailingAnchor,constant: 15),
             vStac.heightAnchor.constraint(equalToConstant: 90),
-            vStac.widthAnchor.constraint(equalToConstant: 170),
-            
+            vStac.widthAnchor.constraint(equalToConstant: 135),
             
             hStac.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
             hStac.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
@@ -173,14 +169,14 @@ class VerticalCollectionViewCell: UICollectionViewCell {
     
     private func updateCounter() {
         counterLabel.text = "\(counter)"
-        delegate?.verticalCollectionViewCell(self, didChangeCounterTo: counter)
+        delegate?.dessertCell(self, didChangeCounterTo: counter)
         counterChangedHandler?(counter)
     }
     
-    func fill(with item: Meal) {
+    func fill(with item: ProductsMeals.Meal) {
+       
         titleLabel.text = item.strMeal!
         priceLabel.text = "\(item.idMeal!) c"
-
         
         if let imageURL = URL(string: item.strMealThumb ?? "") {
             self.imageURL = imageURL

@@ -18,7 +18,7 @@ final class UserSessionManager {
         let currentDate = Date()
         guard let sessionDate = UserDefaults.standard.object(forKey: "sessionDate") as? Date else { return false }
         
-        return sessionDate > currentDate
+        return sessionDate < currentDate
     }
     
     func saveSession(phoneNumber: String) {
@@ -26,7 +26,10 @@ final class UserSessionManager {
         if phoneNumber == "502030422" {
             print("Session is saved")
             let currentDate = Date()
-            let thirySecondAfter = Calendar.current.date(byAdding: .second, value: 30, to: currentDate)
+            let thirySecondAfter = Calendar.current.date(
+                byAdding: .second,
+                value: 30,
+                to: currentDate)
             UserDefaults.standard.setValue(thirySecondAfter, forKey: "sessionDate")
         } else {
             print("The data is't correct")

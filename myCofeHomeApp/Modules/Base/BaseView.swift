@@ -27,5 +27,5 @@ class BaseView: UIView {
      func setupAdd() { }
     
      func setupLayouts() { }
-
+    
 }

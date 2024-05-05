@@ -15,13 +15,18 @@ class TabBarViewController: UITabBarController {
         setupNavBar()
         setupCustomTabBar()
         setupTabItems()
+        
+       
     }
     
     private func setupNavBar() {
         
+        navigationController?.navigationBar.isHidden = false
         navigationItem.hidesBackButton = true
-       
-        navigationItem.title = "Меню"
+        
+        let titleNavBar = "Меню"
+        
+        navigationItem.title = titleNavBar
         
         let belsBtn = UIBarButtonItem(image: UIImage(systemName: "bell.fill"), style: .plain, target: self, action: .none)
         
@@ -30,7 +35,6 @@ class TabBarViewController: UITabBarController {
         belsBtn.tintColor = .black
         
     }
-    
     
     private func setupCustomTabBar() {
         
@@ -42,22 +46,18 @@ class TabBarViewController: UITabBarController {
     private func setupTabItems() {
         
         let homeVC = HomeViewController()
-        let homeNavCont = UINavigationController(rootViewController: homeVC)
-        homeNavCont.tabBarItem.image = UIImage(systemName: "house")
+        homeVC.tabBarItem.image = UIImage(systemName: "house")
         
         let BascetVC = BascetViewController()
-        let bascetNavCont = UINavigationController(rootViewController: BascetVC)
-        bascetNavCont.tabBarItem.image = UIImage(systemName: "cart.fill")
+        BascetVC.tabBarItem.image = UIImage(systemName: "cart.fill")
         
         let catalogVC = CatalogViewController()
-        let catalogNavCont = UINavigationController(rootViewController: catalogVC)
-        catalogNavCont.tabBarItem.image = UIImage(systemName: "safari.fill")
+        catalogVC.tabBarItem.image = UIImage(systemName: "safari.fill")
         
         let profileVC = ProfileViewController()
-        let profileNavCont = UINavigationController(rootViewController: profileVC)
-        profileNavCont.tabBarItem.image = UIImage(systemName: "person.circle")
+        profileVC.tabBarItem.image = UIImage(systemName: "person.circle")
         
-        setViewControllers([homeNavCont, bascetNavCont, catalogNavCont, profileNavCont], animated: false)
+        setViewControllers([homeVC, BascetVC, catalogVC, profileVC], animated: false)
         
     }
     

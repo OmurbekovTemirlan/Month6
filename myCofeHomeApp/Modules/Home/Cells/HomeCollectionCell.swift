@@ -7,16 +7,14 @@
 
 import UIKit
 
-struct HomeCollectionStruct {
-    var title: String
-}
-
 class HomeCollectionCell: UICollectionViewCell {
+    
+    static let reusId = "cell1"
     
    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .systemGray3
+        label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -25,6 +23,7 @@ class HomeCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         setup()
         
+        layer.cornerRadius = 13
         self.isUserInteractionEnabled = true
     }
     
@@ -48,8 +47,8 @@ class HomeCollectionCell: UICollectionViewCell {
         ])
     }
     
-    func set(data: HomeCollectionStruct) {
-        titleLabel.text = data.title
+    func fill(with item: ProductCategory) {
+        titleLabel.text = item.strCategory
     }
     
 }
