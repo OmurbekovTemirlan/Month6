@@ -8,22 +8,24 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+//    private let price: UILabel = {
+//        let price = UILabel()
+//        price.text = "1000c"
+//        return price
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemMint
-        // Do any additional setup after loading the view.
+//      setup()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    private func setup() {
+//        view.addSubview(price)
+//        
+//        price.snp.makeConstraints { make in
+//            make.centerX.centerY.equalToSuperview()
+//        }
+//    }
 }

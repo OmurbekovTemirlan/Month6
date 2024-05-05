@@ -16,7 +16,7 @@ class HomeViewController: BaseViewController {
         view.layer.borderColor = UIColor.systemGray3.cgColor
         view.layer.cornerRadius = 13
         view.backgroundColor = UIColor.clear
-//        view.addTarget(self, action: #selector(searchBarEditing), for: .editingChanged)
+        view.addTarget(self, action: #selector(searchBarEdits), for: .editingChanged)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -58,15 +58,13 @@ class HomeViewController: BaseViewController {
     
     private var counter = 0
     
-    private let parser = JsonParser()
+    private var selectedHorizontalIndex = 0
     
     private let networkService = NetworkService()
     
     private var  productCategory: [ProductCategory] = []
     
     private var products: [Meal] = []
-    
-    private var selectedHorizontalIndex = 0
     
     private var selectedCategory: ProductCategory?
     
@@ -144,7 +142,7 @@ class HomeViewController: BaseViewController {
                     self.productCategory = model
                     self.homeCollectionViewHorizontal.reloadData()
                     if let firstCategory = self.productCategory.first {
-                        self.getProductsNet(forCategory: firstCategory)
+                        self.getProductsNet(with: firstCategory)
                         self.titleCategory.text = self.productCategory.first?.strCategory
                         self.homeCollectionViewVertical.reloadData()
                     }
@@ -156,7 +154,7 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    private func getProductsNet(forCategory category: ProductCategory) {
+    private func getProductsNet(with category: ProductCategory) {
         networkService.getProducts(with: category.strCategory) { [weak self] result in
             DispatchQueue.main.async { [weak self] in guard let self = self else { return }
                 switch result {
@@ -165,6 +163,26 @@ class HomeViewController: BaseViewController {
                     self.homeCollectionViewVertical.reloadData()
                 case .failure(let error):
                     showAlert(title: "Error", massage: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    private func searchProducts(with title: String) {
+        networkService.searchProducts(with: title) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                switch result {
+                case .success(let model):
+                    self.products = model
+                    if self.products.isEmpty {
+                        self.showEmptyScreen()
+                    } else {
+                            self.removeEmptyScreen()
+                            self.homeCollectionViewVertical.reloadData()
+                    }
+                case .failure(_):
+                    self.showEmptyScreen()
                 }
             }
         }
@@ -190,6 +208,43 @@ class HomeViewController: BaseViewController {
             }
         }
     }
+    
+    private func showEmptyScreen() {
+        self.products.removeAll()
+        self.homeCollectionViewVertical.reloadData()
+        let emptyLabel = UILabel()
+        emptyLabel.text = "Нет результатов"
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = .gray
+        emptyLabel.font = UIFont.systemFont(ofSize: 20)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(emptyLabel)
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
+    private func removeEmptyScreen() {
+        for subview in self.view.subviews {
+            if let label = subview as? UILabel, label.text == "Нет результатов" {
+                label.removeFromSuperview()
+            }
+        }
+    }
+
+    @objc
+    private func searchBarEdits() {
+        guard let text = searchBar.text else { return }
+        if text.isEmpty {
+            removeEmptyScreen()
+            homeCollectionViewVertical.reloadData()
+        } else {
+            searchProducts(with: text)
+            homeCollectionViewVertical.reloadData()
+        }
+    }
+    
     
     @objc
     private func belsBtnTap() {
@@ -237,7 +292,7 @@ extension HomeViewController: UICollectionViewDelegate {
             homeCollectionViewHorizontal.reloadData()
             let selectedCategory = productCategory[indexPath.row]
             titleCategory.text = productCategory[indexPath.row].strCategory
-            getProductsNet(forCategory: selectedCategory)
+            getProductsNet(with: selectedCategory)
         } else {
             selectedProduct = products[indexPath.row]
             navigateToDessertsScreen(with: selectedProduct!)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B00DF9F56209CA8FDF3DFD /* Pods_myCofeHomeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3431D9FA5FA408A7F2923139 /* Pods_myCofeHomeApp.framework */; };
 		1853DB3E2BE54131001E9D2C /* LoadImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */; };
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
@@ -80,6 +81,9 @@
 		18B5B6332BE2AF0B00D73889 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		18B5B6352BE2B03800D73889 /* ProductCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategories.swift; sourceTree = "<group>"; };
 		18B5B6372BE363AB00D73889 /* ProductsMeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsMeals.swift; sourceTree = "<group>"; };
+		3431D9FA5FA408A7F2923139 /* Pods_myCofeHomeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myCofeHomeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		91ED7DDDB474C2BE0D2E3B46 /* Pods-myCofeHomeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myCofeHomeApp.debug.xcconfig"; path = "Target Support Files/Pods-myCofeHomeApp/Pods-myCofeHomeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9D7EDE43942C3970B2070A1B /* Pods-myCofeHomeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myCofeHomeApp.release.xcconfig"; path = "Target Support Files/Pods-myCofeHomeApp/Pods-myCofeHomeApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,12 +91,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B00DF9F56209CA8FDF3DFD /* Pods_myCofeHomeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		072BF7E4471FC852B011EF2C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3431D9FA5FA408A7F2923139 /* Pods_myCofeHomeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1853DB3F2BE7B277001E9D2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +119,8 @@
 			children = (
 				188DE60E2BD8497300B41403 /* myCofeHomeApp */,
 				188DE60D2BD8497300B41403 /* Products */,
+				6F8297850BBE0B7151816CC9 /* Pods */,
+				072BF7E4471FC852B011EF2C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +342,16 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		6F8297850BBE0B7151816CC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91ED7DDDB474C2BE0D2E3B46 /* Pods-myCofeHomeApp.debug.xcconfig */,
+				9D7EDE43942C3970B2070A1B /* Pods-myCofeHomeApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -334,9 +359,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188DE6202BD8497600B41403 /* Build configuration list for PBXNativeTarget "myCofeHomeApp" */;
 			buildPhases = (
+				6C17E494789C791DD2C5EB27 /* [CP] Check Pods Manifest.lock */,
 				188DE6082BD8497300B41403 /* Sources */,
 				188DE6092BD8497300B41403 /* Frameworks */,
 				188DE60A2BD8497300B41403 /* Resources */,
+				110C0026B0B2816320F6EE1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -394,6 +421,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		110C0026B0B2816320F6EE1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myCofeHomeApp/Pods-myCofeHomeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-myCofeHomeApp/Pods-myCofeHomeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-myCofeHomeApp/Pods-myCofeHomeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6C17E494789C791DD2C5EB27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-myCofeHomeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		188DE6082BD8497300B41403 /* Sources */ = {
@@ -567,6 +636,7 @@
 		};
 		188DE6212BD8497600B41403 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91ED7DDDB474C2BE0D2E3B46 /* Pods-myCofeHomeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -599,6 +669,7 @@
 		};
 		188DE6222BD8497600B41403 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D7EDE43942C3970B2070A1B /* Pods-myCofeHomeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

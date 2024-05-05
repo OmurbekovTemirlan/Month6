@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class DetailView: BaseView {
 
@@ -115,6 +116,7 @@ class DetailView: BaseView {
     
     override func setupLayouts(){
         super.setupLayouts()
+        
         NSLayoutConstraint.activate([
             
             scrollView.topAnchor.constraint(equalTo: topAnchor),
@@ -143,7 +145,7 @@ class DetailView: BaseView {
             
             titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 15),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -100),
             
             priceLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 15),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
@@ -173,6 +175,7 @@ class DetailView: BaseView {
             }
         }
     }
+    
     @objc
     private func backBtnTapped() {
         delegate?.backBtn()

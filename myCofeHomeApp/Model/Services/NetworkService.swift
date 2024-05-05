@@ -106,4 +106,35 @@ struct NetworkService {
             }
         }.resume()
     }
+    
+    
+    func searchProducts(with title: String, complition: @escaping (Result<[Meal], Error>) -> Void) {
+        
+        var urlComponents = URLComponents(url:  Constants.baseURL.appendingPathComponent("search.php"), resolvingAgainstBaseURL: false)
+        
+        urlComponents?.queryItems = [ URLQueryItem(name: "s", value: title)]
+        
+        guard let url = urlComponents?.url else { return }
+        
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                complition(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                complition(.failure(error!))
+                return
+            }
+            
+            do {
+                let model = try decoder.decode(ProductsMeals.self, from: data)
+                complition(.success(model.meals))
+            } catch {
+                complition(.failure(error))
+            }
+        }.resume()
+    }
 }
