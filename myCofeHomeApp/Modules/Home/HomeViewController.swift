@@ -9,23 +9,6 @@ import UIKit
 
 class HomeViewController: BaseViewController {
     
-    private var selectedHorizontalIndex: Int?
-    
-    private var selectedProduct: ProductsMeals.Meal?
-    
-    private var counter = 0
-    
-    private let idCell = "cell1"
-    private let idCell2 = "cell2"
-    
-    private let parser = JsonParser()
-    
-    private let networkService = NetworkService()
-    
-    private var  categoriess: [ProductsCategories.ProductCategory] = []
-    
-    private var products: [ProductsMeals.Meal] = []
-    
     private let searchBar: UISearchTextField = {
         let view = UISearchTextField()
         view.placeholder = "Поиск"
@@ -53,7 +36,7 @@ class HomeViewController: BaseViewController {
     
     private let titleCategory: UILabel = {
         let label = UILabel()
-        label.text = "Кофе"
+        label.text = ""
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +56,22 @@ class HomeViewController: BaseViewController {
         return collection
     }()
     
+    private var counter = 0
+    
+    private let parser = JsonParser()
+    
+    private let networkService = NetworkService()
+    
+    private var  productCategory: [ProductCategory] = []
+    
+    private var products: [Meal] = []
+    
+    private var selectedHorizontalIndex = 0
+    
+    private var selectedCategory: ProductCategory?
+    
+    private var selectedProduct: Meal?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,7 +79,6 @@ class HomeViewController: BaseViewController {
         
         setup()
         getCategoriesNet()
-        defaultScreen()
         
     }
     
@@ -130,11 +128,11 @@ class HomeViewController: BaseViewController {
         
         homeCollectionViewHorizontal.dataSource = self
         homeCollectionViewHorizontal.delegate = self
-        homeCollectionViewHorizontal.register(HomeCollectionCell.self, forCellWithReuseIdentifier: idCell)
+        homeCollectionViewHorizontal.register(HomeCollectionCell.self, forCellWithReuseIdentifier: HomeCollectionCell.reusId)
         
         homeCollectionViewVertical.dataSource = self
         homeCollectionViewVertical.delegate = self
-        homeCollectionViewVertical.register(VerticalCollectionViewCell.self, forCellWithReuseIdentifier: idCell2)
+        homeCollectionViewVertical.register(VerticalCollectionViewCell.self, forCellWithReuseIdentifier: VerticalCollectionViewCell.reusId)
         
     }
     
@@ -143,8 +141,13 @@ class HomeViewController: BaseViewController {
             DispatchQueue.main.async { [weak self] in guard let self else { return }
                 switch result {
                 case .success(let model):
-                    self.categoriess = model
+                    self.productCategory = model
                     self.homeCollectionViewHorizontal.reloadData()
+                    if let firstCategory = self.productCategory.first {
+                        self.getProductsNet(forCategory: firstCategory)
+                        self.titleCategory.text = self.productCategory.first?.strCategory
+                        self.homeCollectionViewVertical.reloadData()
+                    }
                 case .failure(let error):
                     showAlert(title: "error", massage: error.localizedDescription)
                     print("\(error.localizedDescription)")
@@ -153,8 +156,8 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    private func getProductsNet(forCategory category: String) {
-        networkService.getProducts(with: category) { [weak self] result in
+    private func getProductsNet(forCategory category: ProductCategory) {
+        networkService.getProducts(with: category.strCategory) { [weak self] result in
             DispatchQueue.main.async { [weak self] in guard let self = self else { return }
                 switch result {
                 case .success(let model):
@@ -166,47 +169,26 @@ class HomeViewController: BaseViewController {
             }
         }
     }
-
-
-    private func defaultScreen(){
-        
-        selectedHorizontalIndex = 1
-        
-        if let selectedCategory = categoriess.first?.strCategory {
-            updateDataForVerticalCollectionView(with: selectedCategory)
-            
-        }
-    }
     
-    private func updateDataForVerticalCollectionView(with categoryName: String) {
+    private func navigateToDessertsScreen(with product: Meal) {
         
-      
-            getProductsNet(forCategory: categoryName)
-            homeCollectionViewVertical.reloadData()
-       
+        let detailVC = DetailViewController()
+        detailVC.selectedProduct = selectedProduct?.idMeal
+        detailVC.hidesBottomBarWhenPushed = false
+        navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
     private func setupCollectionCounter() {
         
         if let visibleCells = homeCollectionViewVertical.visibleCells as? [VerticalCollectionViewCell] {
-            
             for cell in visibleCells {
-                
                 cell.counterChangedHandler = { [weak self] count in
-                    
                     self?.counter = count
                     
                 }
             }
         }
-    }
-    
-    private func navigateToDessertsScreen(with product: ProductsMeals.Meal) {
-        
-        let dessertsVC = DessertViewController()
-        dessertsVC.selectedProduct = selectedProduct
-        navigationController?.pushViewController(dessertsVC, animated: true)
-        
     }
     
     @objc
@@ -220,7 +202,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == homeCollectionViewHorizontal {
-            categoriess.count
+            productCategory.count
         } else {
             products.count
         }
@@ -231,13 +213,13 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if collectionView == homeCollectionViewHorizontal {
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell, for: indexPath) as! HomeCollectionCell
-            cell.fill(with: categoriess[indexPath.row])
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reusId, for: indexPath) as! HomeCollectionCell
+            cell.fill(with: productCategory[indexPath.row])
             cell.backgroundColor = (indexPath.item == selectedHorizontalIndex) ? UIColor(named: "ColorItems") : .clear
             return cell
             
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCell2, for: indexPath) as! VerticalCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalCollectionViewCell.reusId, for: indexPath) as! VerticalCollectionViewCell
             cell.fill(with: products[indexPath.row])
             return cell
         }
@@ -251,21 +233,14 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == homeCollectionViewHorizontal {
-            
-            let selectedCategory = categoriess[indexPath.row].strCategory
-            
-            updateDataForVerticalCollectionView(with: selectedCategory)
-            
-            selectedHorizontalIndex = indexPath.item
-            
+            selectedHorizontalIndex = indexPath.row
             homeCollectionViewHorizontal.reloadData()
-            
+            let selectedCategory = productCategory[indexPath.row]
+            titleCategory.text = productCategory[indexPath.row].strCategory
+            getProductsNet(forCategory: selectedCategory)
         } else {
-                
             selectedProduct = products[indexPath.row]
-
             navigateToDessertsScreen(with: selectedProduct!)
-                
         }
     }
 }

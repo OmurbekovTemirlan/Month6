@@ -22,6 +22,8 @@ class VerticalCollectionViewCell: UICollectionViewCell {
     
     private var counter = 0
     
+    static let reusId = "cell1"
+    
     private let images: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 12
@@ -175,7 +177,7 @@ class VerticalCollectionViewCell: UICollectionViewCell {
         counterChangedHandler?(counter)
     }
     
-    func fill(with item: ProductsMeals.Meal) {
+    func fill(with item: Meal) {
         titleLabel.text = item.strMeal!
         priceLabel.text = "\(item.idMeal!) c"
 

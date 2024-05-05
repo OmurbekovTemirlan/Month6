@@ -5,13 +5,11 @@
 //  Created by Apple on 1.5.2024.
 //
 
-struct ProductsCategories: Decodable {
+struct ProductsCategories: Codable {
     let categories: [ProductCategory]
-    
-    struct ProductCategory: Decodable {
-        let strCategory: String
-       
-    }
 
 }
-
+struct ProductCategory: Codable {
+    let strCategory: String
+   
+}

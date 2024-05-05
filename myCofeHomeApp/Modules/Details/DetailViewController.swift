@@ -8,12 +8,13 @@
 import UIKit
 
 protocol DetailViewControllerDelegate: AnyObject {
+    func buyBtn()
     func backBtn()
 }
 
 class DetailViewController: BaseViewController {
     
-    private let dessertView = DetailView()
+    private let detailView = DetailView()
     
     private let networkService = NetworkService()
     
@@ -22,46 +23,51 @@ class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationItem.leftBarButtonItem?.title = ""
         setup()
     }
     
     override func setup(){
         super.setup()
+        setupNavBar()
         setupAdd()
         setupLayouts()
-        setupDessertView()
-        loadDates(id: selectedProduct!)
-        
+        setupDetailsView()
+        detailView.delegate = self
+        getproducts(id: selectedProduct!)
     }
     
     override func setupAdd() {
         super.setupAdd()
-        view.addSubview(dessertView)
+        view.addSubview(detailView)
     }
     
     override func setupLayouts(){
         super.setupLayouts()
         NSLayoutConstraint.activate([
             
-            dessertView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            dessertView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dessertView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dessertView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
-    private func setupDessertView() {
-        dessertView.translatesAutoresizingMaskIntoConstraints = false
+    private func setupDetailsView() {
+        detailView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func loadDates(id: String) {
+    private func setupNavBar() {
+        navigationItem.title = "Детали"
+        navigationItem.hidesBackButton = true
+    }
+    
+    private func getproducts(id: String) {
         networkService.getProductDetails(with: id) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let model):
                 DispatchQueue.main.async {
-                    self.dessertView.fill(with: model)
+                    self.detailView.fill(with: model)
                 }
             case .failure(let error):
                 showAlert(title: "error", massage: error.localizedDescription)
@@ -73,5 +79,10 @@ class DetailViewController: BaseViewController {
 extension DetailViewController: DetailViewControllerDelegate {
     func backBtn() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func buyBtn() {
+        let vc = BascetViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

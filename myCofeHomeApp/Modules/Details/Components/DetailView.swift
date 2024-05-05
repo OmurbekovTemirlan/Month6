@@ -13,10 +13,6 @@ class DetailView: BaseView {
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
-        scroll.isScrollEnabled = true
-        scroll.isUserInteractionEnabled = true
-        scroll.alwaysBounceVertical = true
-        scroll.showsVerticalScrollIndicator = false
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
@@ -33,17 +29,28 @@ class DetailView: BaseView {
         return image
     }()
     
-    private let hStacForLabels: UIStackView = {
-        let stac = UIStackView()
-        stac.axis = .horizontal
-        stac.distribution = .fillEqually
-        stac.translatesAutoresizingMaskIntoConstraints = false
-        return stac
+    private let backbtn: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        btn.backgroundColor = UIColor(named: "yellow")
+        btn.tintColor = .black
+        btn.layer.cornerRadius = 20
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        return btn
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .black
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -69,42 +76,14 @@ class DetailView: BaseView {
         return label
     }()
     
-    private let hStac: UIStackView = {
-        let stac = UIStackView()
-        stac.axis = .horizontal
-        stac.distribution = .fillEqually
-        stac.translatesAutoresizingMaskIntoConstraints = false
-        return stac
-    }()
-    
-    private let plusBtn: UIButton = {
+    private let buyBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setImage(UIImage(systemName: "plus"), for: .normal)
-        btn.tintColor = .white
+        btn.setTitle("BUY", for: .normal)
+        btn.setImage(UIImage(systemName: "cart.fill"), for: .normal)
+        btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = UIColor(named: "yellow")
-        btn.layer.cornerRadius = 18
-//        btn.addTarget(self, action: #selector(plusTap), for: .touchUpInside)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    
-    private let counterLabel: UILabel = {
-        let label = UILabel()
-        label.text = "0"
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 15, weight: .bold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private let minusBtn: UIButton = {
-        let btn = UIButton(type: .system)
-        btn.setImage(UIImage(systemName: "minus"), for: .normal)
         btn.tintColor = .black
-        btn.backgroundColor = .systemGray4
-        btn.layer.cornerRadius = 18
-//        btn.addTarget(self, action: #selector(minusTap), for: .touchUpInside)
+        btn.layer.cornerRadius = 12
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -117,7 +96,8 @@ class DetailView: BaseView {
         setupAdd()
         setupLayouts()
         
-//        leftBackBtn.addTarget(self, action: #selector(leftBackBtnTap), for: .touchUpInside)
+        backbtn.addTarget(self, action: #selector(backBtnTapped), for: .touchUpInside)
+        buyBtn.addTarget(self, action: #selector(buyBtnTapped), for: .touchUpInside)
     }
     
     override func setupAdd(){
@@ -125,15 +105,12 @@ class DetailView: BaseView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(image)
-        contentView.addSubview(hStacForLabels)
+        contentView.addSubview(backbtn)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(categoryLabel)
+        contentView.addSubview(priceLabel)
         contentView.addSubview(infoLabel)
-        contentView.addSubview(hStac)
-        hStacForLabels.addArrangedSubview(titleLabel)
-        hStacForLabels.addArrangedSubview(priceLabel)
-        hStac.addArrangedSubview(minusBtn)
-        hStac.addArrangedSubview(counterLabel)
-        hStac.addArrangedSubview(plusBtn)
-    
+        contentView.addSubview(buyBtn)
     }
     
     override func setupLayouts(){
@@ -148,46 +125,61 @@ class DetailView: BaseView {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
             image.topAnchor.constraint(equalTo: contentView.topAnchor),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            image.heightAnchor.constraint(equalToConstant: 300),
+            image.heightAnchor.constraint(equalToConstant: 320),
             
-            hStacForLabels.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
-            hStacForLabels.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            hStacForLabels.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            hStacForLabels.heightAnchor.constraint(equalToConstant: 30),
+            backbtn.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            backbtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            backbtn.heightAnchor.constraint(equalToConstant: 40),
+            backbtn.widthAnchor.constraint(equalToConstant: 40),
+            
+            categoryLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 15),
+            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            
+            titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 15),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -80),
+            
+            priceLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 15),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
            
-            infoLabel.topAnchor.constraint(equalTo: hStacForLabels.bottomAnchor, constant: 10),
+            infoLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             infoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
-            infoLabel.trailingAnchor.constraint(equalTo: hStac.leadingAnchor, constant: -10),
-            
-            hStac.topAnchor.constraint(equalTo: hStacForLabels.bottomAnchor, constant: 10),
-            hStac.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            hStac.heightAnchor.constraint(equalToConstant: 36),
-            hStac.widthAnchor.constraint(equalToConstant: 110),
-    
+            infoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+           
+            buyBtn.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 20),
+            buyBtn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            buyBtn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            buyBtn.heightAnchor.constraint(equalToConstant: 45),
+            buyBtn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
         ])
     }
     
     func fill(with item: Meal) {
-            titleLabel.text = item.strMeal
-            infoLabel.text = item.strInstructions
-            priceLabel.text = item.idMeal
-            ImageDownloader.shared.loadImage(from: item.strMealThumb) { [weak self] result in
-                if case .success(let image) = result {
-                    DispatchQueue.main.async {
-                        self?.image.image = image
-                    }
+        titleLabel.text = item.strMeal
+        categoryLabel.text = "Категория: \(String(describing: item.strArea!))"
+        infoLabel.text = item.strInstructions
+        priceLabel.text = "\(String(describing: item.idMeal!)) c"
+        ImageDownloader.shared.loadImage(from: item.strMealThumb!) { [weak self] result in
+            if case .success(let image) = result {
+                DispatchQueue.main.async {
+                    self?.image.image = image
                 }
             }
         }
+    }
+    @objc
+    private func backBtnTapped() {
+        delegate?.backBtn()
+    }
     
     @objc
-    private func leftBackBtnTap() {
-        delegate?.backBtn()
+    private func buyBtnTapped() {
+        delegate?.buyBtn()
     }
 }

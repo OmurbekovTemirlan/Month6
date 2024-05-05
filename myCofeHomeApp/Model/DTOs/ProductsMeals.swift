@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ProductsMeals: Decodable {
+struct ProductsMeals: Codable {
     
     let meals: [Meal]
-    
-    struct Meal: Decodable {
-        let idMeal: String?
-        let strMeal: String!
-        let strMealThumb: String!
-        let strArea: String!
-    }
+}
+struct Meal: Codable {
+    let idMeal: String?
+    let strMeal: String?
+    let strMealThumb: String?
+    let strArea: String?
+    let strInstructions: String?
 }

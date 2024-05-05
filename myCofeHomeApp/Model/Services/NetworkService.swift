@@ -15,7 +15,7 @@ struct NetworkService {
     
     private let decoder = JSONDecoder()
     
-    func getCategories(complition: @escaping (Result<[ProductsCategories.ProductCategory], Error>) -> Void) {
+    func getCategories(complition: @escaping (Result<[ProductCategory], Error>) -> Void) {
         let request = URLRequest(url: Constants.baseURL.appendingPathComponent("categories.php"))
         
         URLSession.shared.dataTask(with: request) { data, response, error in
@@ -40,7 +40,7 @@ struct NetworkService {
         }.resume()
     }
     
-    func getProducts(with category: String, complition: @escaping (Result<[ProductsMeals.Meal], Error>) -> Void) {
+    func getProducts(with category: String, complition: @escaping (Result<[Meal], Error>) -> Void) {
         
         var urlComponents = URLComponents(url:  Constants.baseURL.appendingPathComponent("filter.php"), resolvingAgainstBaseURL: false)
         
@@ -73,7 +73,7 @@ struct NetworkService {
         }.resume()
     }
     
-    func getProductsForCell(with productId: String, complition: @escaping (Result<[ProductsMeals.Meal], Error>) -> Void) {
+    func getProductDetails(with productId: String, complition: @escaping (Result<Meal, Error>) -> Void) {
         
         var urlComponents = URLComponents(url:  Constants.baseURL.appendingPathComponent("lookup.php"), resolvingAgainstBaseURL: false)
         
@@ -96,7 +96,9 @@ struct NetworkService {
             
             do {
                 let model = try decoder.decode(ProductsMeals.self, from: data)
-                complition(.success(model.meals))
+                if let mealDetail = model.meals.first {
+                    complition(.success(mealDetail))
+                }
             } catch {
                 complition(.failure(error))
                 print(data)

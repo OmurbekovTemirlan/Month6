@@ -9,6 +9,8 @@ import UIKit
 
 class HomeCollectionCell: UICollectionViewCell {
     
+    static let reusId = "cell1"
+    
    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
@@ -45,7 +47,7 @@ class HomeCollectionCell: UICollectionViewCell {
         ])
     }
     
-    func fill(with item: ProductsCategories.ProductCategory) {
+    func fill(with item: ProductCategory) {
         titleLabel.text = item.strCategory
     }
     
