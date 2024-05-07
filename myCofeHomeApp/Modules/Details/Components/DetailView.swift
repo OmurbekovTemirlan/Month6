@@ -79,7 +79,7 @@ class DetailView: BaseView {
     
     private let buyBtn: UIButton = {
         let btn = UIButton(type: .system)
-        btn.setTitle("BUY", for: .normal)
+        btn.setTitle("Купить", for: .normal)
         btn.setImage(UIImage(systemName: "cart.fill"), for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = UIColor(named: "yellow")

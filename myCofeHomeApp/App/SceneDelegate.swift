@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let initialViev: UIViewController?
         
         if UserDefaults.standard.bool(forKey: "IsOnBord") == true {
-            initialViev = SpalshViewController()
+            initialViev = AuthorizationViewController()
         }else {
             initialViev = StartViewController()
         }

@@ -9,3 +9,6 @@ target 'myCofeHomeApp' do
 
 end
 pod 'SnapKit'
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
+

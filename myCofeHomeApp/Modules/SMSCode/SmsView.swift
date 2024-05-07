@@ -52,7 +52,7 @@ class SmsView: BaseView {
     
     private let signInBtn: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Войти", for: .normal)
+        button.setTitle("Подвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.backgroundColor = UIColor(named: "ColorGeeks")
@@ -73,9 +73,10 @@ class SmsView: BaseView {
         backgroundColor = .systemBackground
         setupAdd()
         setupLayouts()
-        smsCodeTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
         signInBtn.addTarget(self, action: #selector(signIntap), for: .touchUpInside)
     }
+    
     override func setupAdd() {
         super.setupAdd()
         addSubview(titleRestourant)
@@ -85,6 +86,7 @@ class SmsView: BaseView {
         addSubview(signInBtn)
         addSubview(againSetBtn)
     }
+    
     override func setupLayouts() {
         super.setupLayouts()
         
@@ -120,13 +122,8 @@ class SmsView: BaseView {
     }
     
     @objc
-    private func textFieldDidChange(_ textField: UITextField) {
-        delegate?.textFieldDidChange(textField)
-        }
-    
-    @objc
     private func signIntap() {
-        delegate?.signInBtn()
+        delegate?.verifyCide(with: smsCodeTF.text ?? "")
         }
     
 }

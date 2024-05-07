@@ -11,6 +11,9 @@
 		1853DB3E2BE54131001E9D2C /* LoadImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */; };
 		1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */; };
 		1853DB642BE81D3D001E9D2C /* SmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB632BE81D3D001E9D2C /* SmsView.swift */; };
+		1853DB662BE8DD90001E9D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */; };
+		1853DB682BE8E189001E9D2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB672BE8E189001E9D2C /* AuthenticationService.swift */; };
+		1853DB6A2BE8EFCC001E9D2C /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB692BE8EFCC001E9D2C /* AuthModel.swift */; };
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
 		188DE6192BD8497600B41403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6182BD8497600B41403 /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadImage + extension.swift"; sourceTree = "<group>"; };
 		1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewConroller.swift; sourceTree = "<group>"; };
 		1853DB632BE81D3D001E9D2C /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
+		1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1853DB672BE8E189001E9D2C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		1853DB692BE8EFCC001E9D2C /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		188DE60C2BD8497300B41403 /* myCofeHomeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCofeHomeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188DE60F2BD8497300B41403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188DE6112BD8497300B41403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 				18B5B5F32BD940BD00D73889 /* Сatalog */,
 				18B5B5F42BD9412A00D73889 /* Profile */,
 				18B5B6072BDB048A00D73889 /* Details */,
+				1853DB3F2BE7B277001E9D2C /* Extensions */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -185,7 +192,7 @@
 		188DE6252BD849AF00B41403 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
-				1853DB3F2BE7B277001E9D2C /* Extensions */,
+				1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */,
 				188DE6182BD8497600B41403 /* Assets.xcassets */,
 				188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */,
 			);
@@ -206,6 +213,7 @@
 			children = (
 				188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */,
 				188DE62E2BD8544800B41403 /* AuthoView.swift */,
+				1853DB692BE8EFCC001E9D2C /* AuthModel.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 				18B5B5EA2BD91FF800D73889 /* UserSessionManager.swift */,
 				18B5B6162BDFB2DC00D73889 /* JsonParser.swift */,
 				18B5B6302BE2AEE100D73889 /* NetworkService.swift */,
+				1853DB672BE8E189001E9D2C /* AuthenticationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -427,6 +436,7 @@
 				18B5B62A2BE0CD6C00D73889 /* Cakes.json in Resources */,
 				188DE6192BD8497600B41403 /* Assets.xcassets in Resources */,
 				18B5B61B2BDFBE4B00D73889 /* Products.json in Resources */,
+				1853DB662BE8DD90001E9D2C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +502,7 @@
 				1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */,
 				18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */,
 				18B5B6382BE363AB00D73889 /* ProductsMeals.swift in Sources */,
+				1853DB6A2BE8EFCC001E9D2C /* AuthModel.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
@@ -504,6 +515,7 @@
 				18B5B60E2BDBADF000D73889 /* DetailView.swift in Sources */,
 				18B5B6362BE2B03800D73889 /* ProductCategories.swift in Sources */,
 				18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */,
+				1853DB682BE8E189001E9D2C /* AuthenticationService.swift in Sources */,
 				18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */,
 				18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */,
 				18B5B6312BE2AEE100D73889 /* NetworkService.swift in Sources */,

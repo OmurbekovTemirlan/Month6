@@ -9,8 +9,6 @@ import UIKit
 
 class AuthoView: BaseView {
     
-    
-
     private let titleRestourant: UILabel = {
         let label = UILabel()
         label.text = "Cofee House"
@@ -38,9 +36,9 @@ class AuthoView: BaseView {
         return label
     }()
     
-    private let phoneNumber: UITextField = {
+    private let phoneNumberTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "500 222 000"
+        tf.placeholder = "+996 500 222 000"
         tf.backgroundColor = .systemGray5
         tf.layer.cornerRadius = 13
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
@@ -66,8 +64,8 @@ class AuthoView: BaseView {
     override func setup(){
         super.setup()
        
-        phoneNumber.addTarget(self, action: #selector(validateCountTf), for: .editingChanged)
         signInBtn.addTarget(self, action: #selector(signInTap), for: .touchUpInside)
+        phoneNumberTextField.addTarget(self, action: #selector(phoneNumberEdits), for: .editingChanged)
         
     }
     
@@ -76,7 +74,7 @@ class AuthoView: BaseView {
         addSubview(titleRestourant)
         addSubview(titleLabel)
         addSubview(singInLabel)
-        addSubview(phoneNumber)
+        addSubview(phoneNumberTextField)
         addSubview(signInBtn)
     }
     
@@ -94,12 +92,12 @@ class AuthoView: BaseView {
             singInLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             singInLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             
-            phoneNumber.topAnchor.constraint(equalTo: singInLabel.bottomAnchor, constant: 20),
-            phoneNumber.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            phoneNumber.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            phoneNumber.heightAnchor.constraint(equalToConstant: 50),
+            phoneNumberTextField.topAnchor.constraint(equalTo: singInLabel.bottomAnchor, constant: 20),
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            signInBtn.topAnchor.constraint(equalTo: phoneNumber.bottomAnchor, constant: 20),
+            signInBtn.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
             signInBtn.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             signInBtn.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             signInBtn.heightAnchor.constraint(equalToConstant: 50),
@@ -107,16 +105,15 @@ class AuthoView: BaseView {
         ])
     }
     
+    
     @objc
-    private func signInTap(){
-        delegate?.signIn()
+    private func phoneNumberEdits(_ textField: UITextField) {
+        delegate?.phoneNumberTfEdits()
     }
     
     @objc
-    private func validateCountTf(_ text: UITextField){
-        guard let phoneNumber = text.text else { return }
-        if phoneNumber.count == 9 {
-            delegate?.isvalidateTF(text: text)
-        }
+    private func signInTap() {
+        let model = AuthModel(phoneNumber: phoneNumberTextField.text ?? "")
+        delegate?.signIn(with: model )
     }
 }

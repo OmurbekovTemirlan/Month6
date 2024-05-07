@@ -8,8 +8,8 @@
 import UIKit
 
 protocol AuthoViewDelegate: AnyObject {
-    func isvalidateTF(text: UITextField)
-    func signIn()
+    func signIn(with phoneNumber: AuthModel)
+    func phoneNumberTfEdits(with text: UITextField)
 }
 
 class AuthorizationViewController: BaseViewController {
@@ -17,6 +17,8 @@ class AuthorizationViewController: BaseViewController {
     private let authoView = AuthoView()
     
     private let sessionManager = UserSessionManager.shared
+    
+    private let authService = AuthenticationService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +56,20 @@ class AuthorizationViewController: BaseViewController {
 }
 
 extension AuthorizationViewController: AuthoViewDelegate {
-    func isvalidateTF(text: UITextField) {
-        guard let phoneNumber = text.text else { return }
-        if sessionManager.isValid(phoneNumber: phoneNumber){
-            sessionManager.saveSession(phoneNumber: phoneNumber)
-        }
+    func phoneNumberTfEdits(with textField: UITextField) {
+        
     }
-    
-    func signIn() {
-            let vc = SmsViewConroller()
-                navigationController?.pushViewController(vc, animated: true)
+   
+    func signIn(with model: AuthModel) {
+        authService.signIn(with: model.phoneNumber) { result in
+            switch result {
+            case .success(let data):
+                let vc = SmsViewConroller()
+                self.navigationController?.pushViewController(vc, animated: true)
+                print("okay \(model.phoneNumber)")
+            case .failure:
+                self.showAlert(title: "Ошибка", massage: "Введен не правильный номер телефон!")
+            }
+        }
     }
 }

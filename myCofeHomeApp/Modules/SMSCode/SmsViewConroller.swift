@@ -9,13 +9,14 @@ import Foundation
 import SnapKit
 
 protocol SmsViewDelegate: AnyObject {
-    func textFieldDidChange(_ textField: UITextField)
-    func signInBtn()
+    func verifyCide(with code: String)
 }
 
 class SmsViewConroller: BaseViewController {
     
     private let smsView = SmsView()
+    
+    private let authService = AuthenticationService()
    
     override func setup() {
         super.setup()
@@ -38,16 +39,16 @@ class SmsViewConroller: BaseViewController {
     }
 }
 extension SmsViewConroller: SmsViewDelegate {
-    func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        let maxLength = 6
-        if text.count > maxLength {
-            textField.deleteBackward()
+    func verifyCide(with code: String) {
+        authService.verifyPhone(with: code) { result in
+            switch result {
+            case .success(let data):
+                let vc = TabBarViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                print("Пользователб авторизован \(data)")
+            case .failure:
+                self.showAlert(title: "Ошибка", massage: "Не верный код!")
+            }
         }
-    }
-    
-    func signInBtn() {
-        let vc = TabBarViewController()
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
