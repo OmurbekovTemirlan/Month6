@@ -108,7 +108,7 @@ class AuthoView: BaseView {
     
     @objc
     private func phoneNumberEdits(_ textField: UITextField) {
-        delegate?.phoneNumberTfEdits()
+        delegate?.phoneNumberTfEdits(with: textField)
     }
     
     @objc
