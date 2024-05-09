@@ -10,7 +10,7 @@ import SnapKit
 
 class MessageViewConroller: BaseViewController {
     
-    private let smsView = SmsView()
+    private let smsView = MessageView()
     
     private let authService = AuthenticationService()
     
@@ -50,7 +50,7 @@ extension MessageViewConroller: SmsViewDelegate {
             case .success(let data):
                 let vc = TabBarViewController()
                 vc.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.navigationController?.present(vc, animated: true)
                 print("Пользователб авторизован \(data)")
             case .failure:
                 self.showAlert(title: "Ошибка", massage: "Не верный код!")

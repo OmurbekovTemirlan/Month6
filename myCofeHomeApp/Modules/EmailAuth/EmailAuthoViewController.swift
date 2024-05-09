@@ -38,7 +38,8 @@ extension EmailAuthoViewController: EmailViewDelegate {
             switch result {
             case .success:
                 let vc = TabBarViewController()
-                self.navigationController?.pushViewController(vc, animated: false)
+                vc.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(vc, animated: false)
             case .failure:
                 self.showAlert(title: "Ошибка", massage: "Не нервый Email или пароль!")
             }

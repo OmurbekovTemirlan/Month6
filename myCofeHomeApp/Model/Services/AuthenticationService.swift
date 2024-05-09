@@ -53,9 +53,9 @@ struct AuthenticationService {
                 complition(.failure(error))
             }
             if let data {
+                sessionManager.saveSession()
                 complition(.success(data))
             }
         }
-         
     }
 }
