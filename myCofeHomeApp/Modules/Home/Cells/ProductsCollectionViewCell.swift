@@ -9,12 +9,12 @@ import UIKit
 
 protocol VerticalCollectionViewCellDelegate: AnyObject {
     
-    func verticalCollectionViewCell(_ cell: VerticalCollectionViewCell, didChangeCounterTo count: Int)
+    func verticalCollectionViewCell(_ cell: ProductsCollectionViewCell, didChangeCounterTo count: Int)
     
 }
 
 
-class VerticalCollectionViewCell: UICollectionViewCell {
+class ProductsCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: VerticalCollectionViewCellDelegate?
     

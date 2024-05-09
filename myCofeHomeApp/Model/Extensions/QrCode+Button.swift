@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlusButton: UIButton {
+final class QRCodeButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()

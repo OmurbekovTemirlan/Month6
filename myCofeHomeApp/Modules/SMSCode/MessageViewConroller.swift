@@ -8,15 +8,13 @@
 import Foundation
 import SnapKit
 
-protocol SmsViewDelegate: AnyObject {
-    func verifyCide(with code: String)
-}
-
-class SmsViewConroller: BaseViewController {
+class MessageViewConroller: BaseViewController {
     
     private let smsView = SmsView()
     
     private let authService = AuthenticationService()
+    
+     var phoneNumber: String?
    
     override func setup() {
         super.setup()
@@ -24,11 +22,17 @@ class SmsViewConroller: BaseViewController {
         setupAdd()
         setupLayouts()
         smsView.delegate = self
+        
+        if let phoneNumber = phoneNumber {
+            smsView.discriptionLabel.text = "Введите 6-значный код, отправленный на номер \(phoneNumber)"
+        }
     }
+    
     override func setupAdd() {
         super.setupAdd()
         view.addSubview(smsView)
     }
+    
     override func setupLayouts() {
         super.setupLayouts()
         smsView.snp.makeConstraints { make in
@@ -38,17 +42,23 @@ class SmsViewConroller: BaseViewController {
         }
     }
 }
-extension SmsViewConroller: SmsViewDelegate {
-    func verifyCide(with code: String) {
+
+extension MessageViewConroller: SmsViewDelegate {
+    func verifyCode(with code: String) {
         authService.verifyPhone(with: code) { result in
             switch result {
             case .success(let data):
                 let vc = TabBarViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(vc, animated: true)
                 print("Пользователб авторизован \(data)")
             case .failure:
                 self.showAlert(title: "Ошибка", massage: "Не верный код!")
             }
         }
+    }
+    
+    func againSand(with code: String) {
+        
     }
 }

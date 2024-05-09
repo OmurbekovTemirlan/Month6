@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCollectionCell: UICollectionViewCell {
+class CategoriesCollectionViewCell: UICollectionViewCell {
     
     static let reusId = "cell1"
     
