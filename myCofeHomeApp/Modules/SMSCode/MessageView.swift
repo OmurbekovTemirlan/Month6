@@ -13,7 +13,7 @@ protocol SmsViewDelegate: AnyObject {
     func againSand(with code: String)
 }
 
-class SmsView: BaseView {
+class MessageView: BaseView {
     
     private let titleRestourantLabel: UILabel = {
         let label = UILabel()
