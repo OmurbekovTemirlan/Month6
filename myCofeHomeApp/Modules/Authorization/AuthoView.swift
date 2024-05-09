@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthoViewDelegate: AnyObject {
+    func signIn(with phoneNumber: String)
+}
+
 class AuthoView: BaseView {
     
     private let titleRestourant: UILabel = {
@@ -107,13 +111,13 @@ class AuthoView: BaseView {
     
     
     @objc
-    private func phoneNumberEdits(_ textField: UITextField) {
-        delegate?.phoneNumberTfEdits(with: textField)
+    private func phoneNumberEdits() {
+        
     }
     
     @objc
     private func signInTap() {
-        let model = AuthModel(phoneNumber: phoneNumberTextField.text ?? "")
-        delegate?.signIn(with: model )
+        delegate?.signIn(with: phoneNumberTextField.text ?? "" )
     }
+   
 }

@@ -16,16 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let initialViev: UIViewController?
-        
-        if UserDefaults.standard.bool(forKey: "IsOnBord") == true {
-            initialViev = AuthorizationViewController()
-        }else {
-            initialViev = StartViewController()
-        }
-        let navOne = UINavigationController(rootViewController: initialViev!)
+        let vc = EmailAuthoViewController()
+        let navOne = UINavigationController(rootViewController: vc)
         window.rootViewController = navOne
-        
         window.makeKeyAndVisible()
         self.window = window
     

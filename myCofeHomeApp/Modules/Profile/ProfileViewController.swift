@@ -6,26 +6,37 @@
 //
 
 import UIKit
+import SnapKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
     
-//    private let price: UILabel = {
-//        let price = UILabel()
-//        price.text = "1000c"
-//        return price
-//    }()
+    private let profileView = ProfileView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemMint
-//      setup()
+    private let sessionManager = UserSessionManager.shared
+    
+    override func setup() {
+        super.setup()
+        view.backgroundColor = .systemBackground
+        profileView.delegate = self
     }
-    
-//    private func setup() {
-//        view.addSubview(price)
-//        
-//        price.snp.makeConstraints { make in
-//            make.centerX.centerY.equalToSuperview()
-//        }
-//    }
+    override func setupAdd() {
+        super.setupAdd()
+        view.add {
+            profileView
+        }
+    }
+    override func setupLayouts() {
+        super.setupLayouts()
+        profileView.snp.makeConstraints { make in
+            make.top.bottom.trailing.leading.equalToSuperview()
+        }
+    }
+}
+
+extension ProfileViewController: ProfileViewDelegate {
+    func exitButton() {
+        sessionManager.deleteSession()
+        let vc = SplashViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

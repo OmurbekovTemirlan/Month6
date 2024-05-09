@@ -21,7 +21,7 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
-    private let homeCollectionViewHorizontal: UICollectionView = {
+    private let categoriesCollectionView: UICollectionView = {
         let loyaut = UICollectionViewFlowLayout()
         loyaut.itemSize = CGSize(width: 100, height: 30)
         loyaut.minimumLineSpacing = 20
@@ -43,7 +43,7 @@ class HomeViewController: BaseViewController {
         return label
     }()
     
-    private let homeCollectionViewVertical: UICollectionView = {
+    private let productsCollectionView: UICollectionView = {
         let loyaut = UICollectionViewFlowLayout()
         loyaut.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: 120)
         loyaut.minimumLineSpacing = 10
@@ -67,20 +67,18 @@ class HomeViewController: BaseViewController {
     private var products: [Meal] = []
     
     private var selectedCategory: ProductCategory?
-    
-    private var selectedProduct: Meal?
-   
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
         
         setup()
-        getCategoriesNet()
+        getCategories()
         
     }
     
-    override func setup(){
+    override func setup() {
         super.setup()
         setupAdd()
         setupLayouts()
@@ -88,13 +86,12 @@ class HomeViewController: BaseViewController {
         setupCollectionCounter()
     }
     
-    override func setupAdd(){
+    override func setupAdd() {
         super.setupAdd()
         view.addSubview(searchBar)
-        view.addSubview(homeCollectionViewHorizontal)
+        view.addSubview(categoriesCollectionView)
         view.addSubview(titleCategory)
-        view.addSubview(homeCollectionViewVertical)
-        
+        view.addSubview(productsCollectionView)
     }
     
     override func setupLayouts(){
@@ -106,61 +103,59 @@ class HomeViewController: BaseViewController {
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
             searchBar.heightAnchor.constraint(equalToConstant: 40),
             
-            homeCollectionViewHorizontal.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            homeCollectionViewHorizontal.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            homeCollectionViewHorizontal.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            homeCollectionViewHorizontal.heightAnchor.constraint(equalToConstant: 60),
+            categoriesCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            categoriesCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            categoriesCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            categoriesCollectionView.heightAnchor.constraint(equalToConstant: 60),
             
-            titleCategory.topAnchor.constraint(equalTo: homeCollectionViewHorizontal.bottomAnchor, constant: 10),
+            titleCategory.topAnchor.constraint(equalTo: categoriesCollectionView.bottomAnchor, constant: 10),
             titleCategory.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
-            homeCollectionViewVertical.topAnchor.constraint(equalTo: titleCategory.bottomAnchor, constant: 10),
-            homeCollectionViewVertical.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            homeCollectionViewVertical.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            homeCollectionViewVertical.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            productsCollectionView.topAnchor.constraint(equalTo: titleCategory.bottomAnchor, constant: 10),
+            productsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            productsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            productsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
         ])
     }
     
     private func setupCollection() {
+        categoriesCollectionView.dataSource = self
+        categoriesCollectionView.delegate = self
+        categoriesCollectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reusId)
         
-        homeCollectionViewHorizontal.dataSource = self
-        homeCollectionViewHorizontal.delegate = self
-        homeCollectionViewHorizontal.register(HomeCollectionCell.self, forCellWithReuseIdentifier: HomeCollectionCell.reusId)
-        
-        homeCollectionViewVertical.dataSource = self
-        homeCollectionViewVertical.delegate = self
-        homeCollectionViewVertical.register(VerticalCollectionViewCell.self, forCellWithReuseIdentifier: VerticalCollectionViewCell.reusId)
-        
+        productsCollectionView.dataSource = self
+        productsCollectionView.delegate = self
+        productsCollectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: ProductsCollectionViewCell.reusId)
     }
     
-    private func getCategoriesNet() {
+    private func getCategories() {
         networkService.getCategories { [weak self] result in
-            DispatchQueue.main.async { [weak self] in guard let self else { return }
+            DispatchQueue.main.async { [weak self] in 
+                guard let self else { return }
                 switch result {
                 case .success(let model):
                     self.productCategory = model
-                    self.homeCollectionViewHorizontal.reloadData()
+                    self.categoriesCollectionView.reloadData()
                     if let firstCategory = self.productCategory.first {
-                        self.getProductsNet(with: firstCategory)
-                        self.titleCategory.text = self.productCategory.first?.strCategory
-                        self.homeCollectionViewVertical.reloadData()
+                        self.getProducts(with: firstCategory)
+                        self.titleCategory.text = firstCategory.strCategory
+                        self.productsCollectionView.reloadData()
                     }
                 case .failure(let error):
                     showAlert(title: "error", massage: error.localizedDescription)
-                    print("\(error.localizedDescription)")
                 }
             }
         }
     }
     
-    private func getProductsNet(with category: ProductCategory) {
+    private func getProducts(with category: ProductCategory) {
         networkService.getProducts(with: category.strCategory) { [weak self] result in
             DispatchQueue.main.async { [weak self] in guard let self = self else { return }
                 switch result {
                 case .success(let model):
                     self.products = model
-                    self.homeCollectionViewVertical.reloadData()
+                    self.productsCollectionView.reloadData()
                 case .failure(let error):
                     showAlert(title: "Error", massage: error.localizedDescription)
                 }
@@ -179,27 +174,29 @@ class HomeViewController: BaseViewController {
                         self.showEmptyScreen()
                     } else {
                             self.removeEmptyScreen()
-                            self.homeCollectionViewVertical.reloadData()
+                            self.productsCollectionView.reloadData()
                     }
-                case .failure(_):
+                case .failure:
                     self.showEmptyScreen()
                 }
             }
         }
     }
     
-    private func navigateToDessertsScreen(with product: Meal) {
+    private func handleProductDetailsTap(with product: Meal) {
         
         let detailVC = DetailViewController()
-        detailVC.selectedProduct = selectedProduct?.idMeal
-        detailVC.hidesBottomBarWhenPushed = false
-        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.selectedProduct = product.idMeal
+        detailVC.hidesBottomBarWhenPushed = true
+        detailVC.modalPresentationStyle = .fullScreen
+        detailVC.modalTransitionStyle = .flipHorizontal
+        navigationController?.present(detailVC, animated: true)
         
     }
     
     private func setupCollectionCounter() {
         
-        if let visibleCells = homeCollectionViewVertical.visibleCells as? [VerticalCollectionViewCell] {
+        if let visibleCells = productsCollectionView.visibleCells as? [ProductsCollectionViewCell] {
             for cell in visibleCells {
                 cell.counterChangedHandler = { [weak self] count in
                     self?.counter = count
@@ -211,7 +208,7 @@ class HomeViewController: BaseViewController {
     
     private func showEmptyScreen() {
         self.products.removeAll()
-        self.homeCollectionViewVertical.reloadData()
+        self.productsCollectionView.reloadData()
         let emptyLabel = UILabel()
         emptyLabel.text = "Нет результатов"
         emptyLabel.textAlignment = .center
@@ -238,17 +235,11 @@ class HomeViewController: BaseViewController {
         guard let text = searchBar.text else { return }
         if text.isEmpty {
             removeEmptyScreen()
-            homeCollectionViewVertical.reloadData()
+            productsCollectionView.reloadData()
         } else {
             searchProducts(with: text)
-            homeCollectionViewVertical.reloadData()
+            productsCollectionView.reloadData()
         }
-    }
-    
-    
-    @objc
-    private func belsBtnTap() {
-        
     }
 }
 
@@ -256,7 +247,7 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == homeCollectionViewHorizontal {
+        if collectionView == categoriesCollectionView {
             productCategory.count
         } else {
             products.count
@@ -266,15 +257,15 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == homeCollectionViewHorizontal {
+        if collectionView == categoriesCollectionView {
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionCell.reusId, for: indexPath) as! HomeCollectionCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reusId, for: indexPath) as! CategoriesCollectionViewCell
             cell.fill(with: productCategory[indexPath.row])
             cell.backgroundColor = (indexPath.item == selectedHorizontalIndex) ? UIColor(named: "ColorItems") : .clear
             return cell
             
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalCollectionViewCell.reusId, for: indexPath) as! VerticalCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductsCollectionViewCell.reusId, for: indexPath) as! ProductsCollectionViewCell
             cell.fill(with: products[indexPath.row])
             return cell
         }
@@ -287,15 +278,14 @@ extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if collectionView == homeCollectionViewHorizontal {
+        if collectionView == categoriesCollectionView {
             selectedHorizontalIndex = indexPath.row
-            homeCollectionViewHorizontal.reloadData()
+            categoriesCollectionView.reloadData()
             let selectedCategory = productCategory[indexPath.row]
             titleCategory.text = productCategory[indexPath.row].strCategory
-            getProductsNet(with: selectedCategory)
+            getProducts(with: selectedCategory)
         } else {
-            selectedProduct = products[indexPath.row]
-            navigateToDessertsScreen(with: selectedProduct!)
+            handleProductDetailsTap(with: products[indexPath.row])
         }
     }
 }

@@ -15,11 +15,12 @@ class SplashViewController: UIViewController {
       
         if UserSessionManager.shared.isSessionActive {
             let vc = TabBarViewController()
-            navigationController?.pushViewController(vc, animated: false)
+            vc.modalPresentationStyle = .fullScreen
+            navigationController?.present(vc, animated: true)
         } else {
-            let vc = AuthorizationViewController()
+            let vc = EmailAuthoViewController()
+            vc.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(vc, animated: false)
         }
-        
     }
 }

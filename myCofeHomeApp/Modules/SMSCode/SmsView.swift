@@ -8,9 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol SmsViewDelegate: AnyObject {
+    func verifyCode(with code: String)
+    func againSand(with code: String)
+}
+
 class SmsView: BaseView {
     
-    private let titleRestourant: UILabel = {
+    private let titleRestourantLabel: UILabel = {
         let label = UILabel()
         label.text = "Cofee House"
         label.font = .systemFont(ofSize: 22, weight: .bold)
@@ -26,7 +31,7 @@ class SmsView: BaseView {
         return label
     }()
     
-    private let discriptionLabel: UILabel = {
+    var discriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите 6-и значный код, отправленный номер 0502030422"
         label.font = .systemFont(ofSize: 18, weight: .regular)
@@ -50,7 +55,7 @@ class SmsView: BaseView {
         return tf
     }()
     
-    private let signInBtn: UIButton = {
+    private let signInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Подвердить", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -59,7 +64,7 @@ class SmsView: BaseView {
         return button
     }()
     
-    private let againSetBtn: UIButton = {
+    private let againSetButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отправить еще раз", for: .normal)
         button.setTitleColor(.systemGray2, for: .normal)
@@ -68,35 +73,38 @@ class SmsView: BaseView {
     
     weak var delegate: SmsViewDelegate?
     
+    weak var authDelegate: AuthoViewDelegate?
+    
     override func setup() {
         super.setup()
         backgroundColor = .systemBackground
         setupAdd()
         setupLayouts()
         
-        signInBtn.addTarget(self, action: #selector(signIntap), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
+        againSetButton.addTarget(self, action: #selector(againSetButtonTapped), for: .touchUpInside)
     }
     
     override func setupAdd() {
         super.setupAdd()
-        addSubview(titleRestourant)
+        addSubview(titleRestourantLabel)
         addSubview(titleLabel)
         addSubview(discriptionLabel)
         addSubview(smsCodeTF)
-        addSubview(signInBtn)
-        addSubview(againSetBtn)
+        addSubview(signInButton)
+        addSubview(againSetButton)
     }
     
     override func setupLayouts() {
         super.setupLayouts()
         
-        titleRestourant.snp.makeConstraints { make in
+        titleRestourantLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(70)
             make.centerX.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleRestourant.snp.bottom).offset(10)
+            make.top.equalTo(titleRestourantLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         
@@ -110,20 +118,25 @@ class SmsView: BaseView {
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
-        signInBtn.snp.makeConstraints { make in
+        signInButton.snp.makeConstraints { make in
             make.top.equalTo(smsCodeTF.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
-        againSetBtn.snp.makeConstraints { make in
-            make.top.equalTo(signInBtn.snp.bottom).offset(15)
+        againSetButton.snp.makeConstraints { make in
+            make.top.equalTo(signInButton.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
     }
     
     @objc
-    private func signIntap() {
-        delegate?.verifyCide(with: smsCodeTF.text ?? "")
+    private func signInTapped() {
+        delegate?.verifyCode(with: smsCodeTF.text ?? "")
+       
         }
+    @objc
+    private func againSetButtonTapped() {
+
+    }
     
 }

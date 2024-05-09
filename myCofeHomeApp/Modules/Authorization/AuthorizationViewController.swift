@@ -7,11 +7,6 @@
   
 import UIKit
 
-protocol AuthoViewDelegate: AnyObject {
-    func signIn(with phoneNumber: AuthModel)
-    func phoneNumberTfEdits(with text: UITextField)
-}
-
 class AuthorizationViewController: BaseViewController {
     
     private let authoView = AuthoView()
@@ -56,17 +51,16 @@ class AuthorizationViewController: BaseViewController {
 }
 
 extension AuthorizationViewController: AuthoViewDelegate {
-    func phoneNumberTfEdits(with textField: UITextField) {
-        
-    }
    
-    func signIn(with model: AuthModel) {
-        authService.signIn(with: model.phoneNumber) { result in
+    func signIn(with phoneNumber: String) {
+        authService.signIn(with: phoneNumber) { result in
             switch result {
-            case .success(let data):
-                let vc = SmsViewConroller()
+            case .success:
+                let vc = MessageViewConroller()
+                vc.phoneNumber = phoneNumber
+                vc.modalPresentationStyle = .fullScreen
                 self.navigationController?.pushViewController(vc, animated: true)
-                print("okay \(model.phoneNumber)")
+                print("okay \(phoneNumber)")
             case .failure:
                 self.showAlert(title: "Ошибка", massage: "Введен не правильный номер телефон!")
             }

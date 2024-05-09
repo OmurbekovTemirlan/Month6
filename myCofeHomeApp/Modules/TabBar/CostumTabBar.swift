@@ -9,7 +9,7 @@ import UIKit
 
 final class CostumTabBar: UITabBar {
     
-     private let plusButton = PlusButton(type: .system)
+     private let plusButton = QRCodeButton(type: .system)
      
      override func draw(_ rect: CGRect) {
          super.draw(rect)

@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		10B00DF9F56209CA8FDF3DFD /* Pods_myCofeHomeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3431D9FA5FA408A7F2923139 /* Pods_myCofeHomeApp.framework */; };
-		1853DB3E2BE54131001E9D2C /* LoadImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */; };
-		1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */; };
+		1853DB3E2BE54131001E9D2C /* LoadImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB3D2BE54131001E9D2C /* LoadImage+Extension.swift */; };
+		1853DB622BE81CC9001E9D2C /* MessageViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB612BE81CC9001E9D2C /* MessageViewConroller.swift */; };
 		1853DB642BE81D3D001E9D2C /* SmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB632BE81D3D001E9D2C /* SmsView.swift */; };
-		1853DB662BE8DD90001E9D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */; };
 		1853DB682BE8E189001E9D2C /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB672BE8E189001E9D2C /* AuthenticationService.swift */; };
-		1853DB6A2BE8EFCC001E9D2C /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB692BE8EFCC001E9D2C /* AuthModel.swift */; };
+		1853DB6D2BECFE5B001E9D2C /* EmailAuthoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB6C2BECFE5B001E9D2C /* EmailAuthoViewController.swift */; };
+		1853DB6F2BED0055001E9D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1853DB6E2BED0055001E9D2C /* GoogleService-Info.plist */; };
+		1853DB712BED27A2001E9D2C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB702BED27A2001E9D2C /* UIView+Extension.swift */; };
+		1853DB732BED61B7001E9D2C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB722BED61B7001E9D2C /* ProfileView.swift */; };
+		1853DB752BED74F8001E9D2C /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB742BED74F8001E9D2C /* EmailView.swift */; };
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
 		188DE6192BD8497600B41403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6182BD8497600B41403 /* Assets.xcassets */; };
@@ -29,12 +32,12 @@
 		18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F52BD9416200D73889 /* BascetViewController.swift */; };
 		18B5B5FA2BD9419900D73889 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5F92BD9419900D73889 /* CatalogViewController.swift */; };
 		18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */; };
-		18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */; };
+		18B5B5FF2BDA2A7500D73889 /* QrCode+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B5FE2BDA2A7500D73889 /* QrCode+Button.swift */; };
 		18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */; };
-		18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */; };
-		18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */; };
+		18B5B6042BDA636F00D73889 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6032BDA636F00D73889 /* CategoriesCollectionViewCell.swift */; };
+		18B5B6062BDABC7D00D73889 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6052BDABC7D00D73889 /* ProductsCollectionViewCell.swift */; };
 		18B5B6092BDB04B100D73889 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6082BDB04B100D73889 /* DetailViewController.swift */; };
-		18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */; };
+		18B5B60C2BDBABF500D73889 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60B2BDBABF500D73889 /* SplashViewController.swift */; };
 		18B5B60E2BDBADF000D73889 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B60D2BDBADF000D73889 /* DetailView.swift */; };
 		18B5B6172BDFB2DC00D73889 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6162BDFB2DC00D73889 /* JsonParser.swift */; };
 		18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B5B6182BDFB85100D73889 /* ProductsJson.swift */; };
@@ -49,12 +52,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadImage + extension.swift"; sourceTree = "<group>"; };
-		1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewConroller.swift; sourceTree = "<group>"; };
+		1853DB3D2BE54131001E9D2C /* LoadImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadImage+Extension.swift"; sourceTree = "<group>"; };
+		1853DB612BE81CC9001E9D2C /* MessageViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewConroller.swift; sourceTree = "<group>"; };
 		1853DB632BE81D3D001E9D2C /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
-		1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1853DB672BE8E189001E9D2C /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		1853DB692BE8EFCC001E9D2C /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		1853DB6C2BECFE5B001E9D2C /* EmailAuthoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthoViewController.swift; sourceTree = "<group>"; };
+		1853DB6E2BED0055001E9D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1853DB702BED27A2001E9D2C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		1853DB722BED61B7001E9D2C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1853DB742BED74F8001E9D2C /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
 		188DE60C2BD8497300B41403 /* myCofeHomeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCofeHomeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188DE60F2BD8497300B41403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188DE6112BD8497300B41403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,12 +78,12 @@
 		18B5B5F52BD9416200D73889 /* BascetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BascetViewController.swift; sourceTree = "<group>"; };
 		18B5B5F92BD9419900D73889 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
+		18B5B5FE2BDA2A7500D73889 /* QrCode+Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QrCode+Button.swift"; sourceTree = "<group>"; };
 		18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostumTabBar.swift; sourceTree = "<group>"; };
-		18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
-		18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		18B5B6032BDA636F00D73889 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		18B5B6052BDABC7D00D73889 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		18B5B6082BDB04B100D73889 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpalshViewController.swift; sourceTree = "<group>"; };
+		18B5B60B2BDBABF500D73889 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		18B5B60D2BDBADF000D73889 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		18B5B6162BDFB2DC00D73889 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		18B5B6182BDFB85100D73889 /* ProductsJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsJson.swift; sourceTree = "<group>"; };
@@ -117,7 +123,9 @@
 		1853DB3F2BE7B277001E9D2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1853DB3D2BE54131001E9D2C /* LoadImage + extension.swift */,
+				18B5B5FE2BDA2A7500D73889 /* QrCode+Button.swift */,
+				1853DB3D2BE54131001E9D2C /* LoadImage+Extension.swift */,
+				1853DB702BED27A2001E9D2C /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -125,10 +133,19 @@
 		1853DB602BE81CA5001E9D2C /* SMSCode */ = {
 			isa = PBXGroup;
 			children = (
-				1853DB612BE81CC9001E9D2C /* SmsViewConroller.swift */,
+				1853DB612BE81CC9001E9D2C /* MessageViewConroller.swift */,
 				1853DB632BE81D3D001E9D2C /* SmsView.swift */,
 			);
 			path = SMSCode;
+			sourceTree = "<group>";
+		};
+		1853DB6B2BECFE11001E9D2C /* EmailAuth */ = {
+			isa = PBXGroup;
+			children = (
+				1853DB6C2BECFE5B001E9D2C /* EmailAuthoViewController.swift */,
+				1853DB742BED74F8001E9D2C /* EmailView.swift */,
+			);
+			path = EmailAuth;
 			sourceTree = "<group>";
 		};
 		188DE6032BD8497300B41403 = {
@@ -176,6 +193,7 @@
 				188DE6302BD9000300B41403 /* Base */,
 				18B5B60A2BDBABD700D73889 /* Splash */,
 				188DE6262BD849EC00B41403 /* Start */,
+				1853DB6B2BECFE11001E9D2C /* EmailAuth */,
 				188DE62B2BD852A300B41403 /* Authorization */,
 				1853DB602BE81CA5001E9D2C /* SMSCode */,
 				18B5B5EE2BD93E4E00D73889 /* TabBar */,
@@ -184,7 +202,6 @@
 				18B5B5F32BD940BD00D73889 /* Сatalog */,
 				18B5B5F42BD9412A00D73889 /* Profile */,
 				18B5B6072BDB048A00D73889 /* Details */,
-				1853DB3F2BE7B277001E9D2C /* Extensions */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -192,7 +209,7 @@
 		188DE6252BD849AF00B41403 /* Recources */ = {
 			isa = PBXGroup;
 			children = (
-				1853DB652BE8DD90001E9D2C /* GoogleService-Info.plist */,
+				1853DB6E2BED0055001E9D2C /* GoogleService-Info.plist */,
 				188DE6182BD8497600B41403 /* Assets.xcassets */,
 				188DE61A2BD8497600B41403 /* LaunchScreen.storyboard */,
 			);
@@ -213,7 +230,6 @@
 			children = (
 				188DE62C2BD852DA00B41403 /* AuthorizationViewController.swift */,
 				188DE62E2BD8544800B41403 /* AuthoView.swift */,
-				1853DB692BE8EFCC001E9D2C /* AuthModel.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -239,6 +255,7 @@
 		18B5B5E92BD91FB300D73889 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1853DB3F2BE7B277001E9D2C /* Extensions */,
 				18B5B6322BE2AEFB00D73889 /* Constants */,
 				18B5B61C2BDFC43700D73889 /* DTOs */,
 				18B5B6132BDFB0B600D73889 /* JSON */,
@@ -252,7 +269,6 @@
 			children = (
 				18B5B5EF2BD93E6600D73889 /* TabBarViewController.swift */,
 				18B5B6002BDA2C9C00D73889 /* CostumTabBar.swift */,
-				18B5B5FD2BDA2A5600D73889 /* UI */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -277,23 +293,16 @@
 			isa = PBXGroup;
 			children = (
 				18B5B5FB2BD941AF00D73889 /* ProfileViewController.swift */,
+				1853DB722BED61B7001E9D2C /* ProfileView.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		18B5B5FD2BDA2A5600D73889 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				18B5B5FE2BDA2A7500D73889 /* PlusButton.swift */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		18B5B6022BDA633100D73889 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				18B5B6032BDA636F00D73889 /* HomeCollectionCell.swift */,
-				18B5B6052BDABC7D00D73889 /* VerticalCollectionViewCell.swift */,
+				18B5B6032BDA636F00D73889 /* CategoriesCollectionViewCell.swift */,
+				18B5B6052BDABC7D00D73889 /* ProductsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -310,7 +319,7 @@
 		18B5B60A2BDBABD700D73889 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				18B5B60B2BDBABF500D73889 /* SpalshViewController.swift */,
+				18B5B60B2BDBABF500D73889 /* SplashViewController.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -436,7 +445,7 @@
 				18B5B62A2BE0CD6C00D73889 /* Cakes.json in Resources */,
 				188DE6192BD8497600B41403 /* Assets.xcassets in Resources */,
 				18B5B61B2BDFBE4B00D73889 /* Products.json in Resources */,
-				1853DB662BE8DD90001E9D2C /* GoogleService-Info.plist in Resources */,
+				1853DB6F2BED0055001E9D2C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,14 +504,16 @@
 				18B5B6012BDA2C9C00D73889 /* CostumTabBar.swift in Sources */,
 				18B5B5EB2BD91FF800D73889 /* UserSessionManager.swift in Sources */,
 				18B5B62C2BE0D1A100D73889 /* BaseViewController.swift in Sources */,
-				1853DB3E2BE54131001E9D2C /* LoadImage + extension.swift in Sources */,
-				18B5B5FF2BDA2A7500D73889 /* PlusButton.swift in Sources */,
+				1853DB3E2BE54131001E9D2C /* LoadImage+Extension.swift in Sources */,
+				18B5B5FF2BDA2A7500D73889 /* QrCode+Button.swift in Sources */,
+				1853DB712BED27A2001E9D2C /* UIView+Extension.swift in Sources */,
 				18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */,
 				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
-				1853DB622BE81CC9001E9D2C /* SmsViewConroller.swift in Sources */,
-				18B5B6042BDA636F00D73889 /* HomeCollectionCell.swift in Sources */,
+				1853DB622BE81CC9001E9D2C /* MessageViewConroller.swift in Sources */,
+				1853DB732BED61B7001E9D2C /* ProfileView.swift in Sources */,
+				18B5B6042BDA636F00D73889 /* CategoriesCollectionViewCell.swift in Sources */,
 				18B5B6382BE363AB00D73889 /* ProductsMeals.swift in Sources */,
-				1853DB6A2BE8EFCC001E9D2C /* AuthModel.swift in Sources */,
+				1853DB6D2BECFE5B001E9D2C /* EmailAuthoViewController.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
@@ -510,14 +521,15 @@
 				188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */,
 				18B5B6092BDB04B100D73889 /* DetailViewController.swift in Sources */,
 				188DE6322BD9001D00B41403 /* BaseView.swift in Sources */,
-				18B5B60C2BDBABF500D73889 /* SpalshViewController.swift in Sources */,
+				18B5B60C2BDBABF500D73889 /* SplashViewController.swift in Sources */,
+				1853DB752BED74F8001E9D2C /* EmailView.swift in Sources */,
 				18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */,
 				18B5B60E2BDBADF000D73889 /* DetailView.swift in Sources */,
 				18B5B6362BE2B03800D73889 /* ProductCategories.swift in Sources */,
 				18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */,
 				1853DB682BE8E189001E9D2C /* AuthenticationService.swift in Sources */,
 				18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */,
-				18B5B6062BDABC7D00D73889 /* VerticalCollectionViewCell.swift in Sources */,
+				18B5B6062BDABC7D00D73889 /* ProductsCollectionViewCell.swift in Sources */,
 				18B5B6312BE2AEE100D73889 /* NetworkService.swift in Sources */,
 				18B5B6172BDFB2DC00D73889 /* JsonParser.swift in Sources */,
 				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,

@@ -11,6 +11,7 @@ import FirebaseAuth
 struct AuthenticationService {
     
     private let auth = Auth.auth()
+    private let sessionManager = UserSessionManager.shared
     
     func signIn(with phone: String, complition: @escaping (Result<Void, Error>) -> Void) {
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil) { verificationId, error in
@@ -36,6 +37,7 @@ struct AuthenticationService {
                     complition(.failure(error))
                 }
                 if let data {
+                    sessionManager.saveSession()
                     complition(.success(data))
                 }
             }

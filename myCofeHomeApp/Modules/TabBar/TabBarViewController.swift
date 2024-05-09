@@ -46,18 +46,22 @@ class TabBarViewController: UITabBarController {
     private func setupTabItems() {
         
         let homeVC = HomeViewController()
+        let homeNavVC = UINavigationController(rootViewController: homeVC)
         homeVC.tabBarItem.image = UIImage(systemName: "house")
         
-        let BascetVC = BascetViewController()
-        BascetVC.tabBarItem.image = UIImage(systemName: "cart.fill")
+        let bascetVC = BascetViewController()
+        let bascetNavVC = UINavigationController(rootViewController: bascetVC)
+        bascetVC.tabBarItem.image = UIImage(systemName: "cart.fill")
         
         let catalogVC = CatalogViewController()
+        let catalogNavVC = UINavigationController(rootViewController: catalogVC)
         catalogVC.tabBarItem.image = UIImage(systemName: "safari.fill")
         
         let profileVC = ProfileViewController()
+        let profileNavVC = UINavigationController(rootViewController: profileVC)
         profileVC.tabBarItem.image = UIImage(systemName: "person.circle")
         
-        setViewControllers([homeVC, BascetVC, catalogVC, profileVC], animated: false)
+        setViewControllers([homeNavVC, bascetNavVC, catalogNavVC, profileNavVC], animated: false)
         
     }
     

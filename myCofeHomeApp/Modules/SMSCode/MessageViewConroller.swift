@@ -50,7 +50,7 @@ extension MessageViewConroller: SmsViewDelegate {
             case .success(let data):
                 let vc = TabBarViewController()
                 vc.modalPresentationStyle = .fullScreen
-                self.navigationController?.present(vc, animated: true)
+                self.navigationController?.pushViewController(vc, animated: true)
                 print("Пользователб авторизован \(data)")
             case .failure:
                 self.showAlert(title: "Ошибка", massage: "Не верный код!")

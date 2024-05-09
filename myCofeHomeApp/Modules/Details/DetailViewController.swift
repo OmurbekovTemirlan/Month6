@@ -7,11 +7,6 @@
 
 import UIKit
 
-protocol DetailViewControllerDelegate: AnyObject {
-    func buyBtn()
-    func backBtn()
-}
-
 class DetailViewController: BaseViewController {
     
     private let detailView = DetailView()
@@ -20,15 +15,30 @@ class DetailViewController: BaseViewController {
     
     var selectedProduct: String?
     
+    override func loadView() {
+        super.loadView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setup()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
     override func setup(){
         super.setup()
-        setupNavBar()
         setupAdd()
         setupLayouts()
         setupDetailsView()
@@ -48,17 +58,12 @@ class DetailViewController: BaseViewController {
             detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
     private func setupDetailsView() {
         detailView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    private func setupNavBar() {
-        navigationItem.title = "Детали"
-        navigationItem.hidesBackButton = true
     }
     
     private func getproducts(id: String) {
@@ -78,7 +83,8 @@ class DetailViewController: BaseViewController {
 
 extension DetailViewController: DetailViewControllerDelegate {
     func backBtn() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+
     }
     
     func buyBtn() {
