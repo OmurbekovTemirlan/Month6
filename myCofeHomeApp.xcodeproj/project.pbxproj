@@ -17,6 +17,11 @@
 		1853DB712BED27A2001E9D2C /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB702BED27A2001E9D2C /* UIView+Extension.swift */; };
 		1853DB732BED61B7001E9D2C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB722BED61B7001E9D2C /* ProfileView.swift */; };
 		1853DB752BED74F8001E9D2C /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB742BED74F8001E9D2C /* EmailView.swift */; };
+		1853DB7D2BEF7664001E9D2C /* ResultSearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB7C2BEF7664001E9D2C /* ResultSearchBarViewController.swift */; };
+		1853DB7F2BEF76C6001E9D2C /* ResultSearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB7E2BEF76C6001E9D2C /* ResultSearchBarCell.swift */; };
+		1853DB822BEF783A001E9D2C /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB812BEF783A001E9D2C /* ProductCollectionViewCell.swift */; };
+		1853DB842BEF79B2001E9D2C /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB832BEF79B2001E9D2C /* BaseCollectionViewCell.swift */; };
+		1853DB862BEF7F62001E9D2C /* ProductParfumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853DB852BEF7F62001E9D2C /* ProductParfumes.swift */; };
 		188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE60F2BD8497300B41403 /* AppDelegate.swift */; };
 		188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DE6112BD8497300B41403 /* SceneDelegate.swift */; };
 		188DE6192BD8497600B41403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188DE6182BD8497600B41403 /* Assets.xcassets */; };
@@ -61,6 +66,11 @@
 		1853DB702BED27A2001E9D2C /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1853DB722BED61B7001E9D2C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1853DB742BED74F8001E9D2C /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		1853DB7C2BEF7664001E9D2C /* ResultSearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchBarViewController.swift; sourceTree = "<group>"; };
+		1853DB7E2BEF76C6001E9D2C /* ResultSearchBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchBarCell.swift; sourceTree = "<group>"; };
+		1853DB812BEF783A001E9D2C /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		1853DB832BEF79B2001E9D2C /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		1853DB852BEF7F62001E9D2C /* ProductParfumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParfumes.swift; sourceTree = "<group>"; };
 		188DE60C2BD8497300B41403 /* myCofeHomeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCofeHomeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188DE60F2BD8497300B41403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188DE6112BD8497300B41403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +156,23 @@
 				1853DB742BED74F8001E9D2C /* EmailView.swift */,
 			);
 			path = EmailAuth;
+			sourceTree = "<group>";
+		};
+		1853DB7B2BEF7604001E9D2C /* ResultSeachBar */ = {
+			isa = PBXGroup;
+			children = (
+				1853DB7C2BEF7664001E9D2C /* ResultSearchBarViewController.swift */,
+				1853DB7E2BEF76C6001E9D2C /* ResultSearchBarCell.swift */,
+			);
+			path = ResultSeachBar;
+			sourceTree = "<group>";
+		};
+		1853DB802BEF7818001E9D2C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1853DB812BEF783A001E9D2C /* ProductCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		188DE6032BD8497300B41403 = {
@@ -239,6 +266,7 @@
 			children = (
 				188DE6312BD9001D00B41403 /* BaseView.swift */,
 				18B5B62B2BE0D1A100D73889 /* BaseViewController.swift */,
+				1853DB832BEF79B2001E9D2C /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -247,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				18B5B5E72BD9187700D73889 /* HomeViewController.swift */,
+				1853DB7B2BEF7604001E9D2C /* ResultSeachBar */,
 				18B5B6022BDA633100D73889 /* Cells */,
 			);
 			path = Home;
@@ -277,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				18B5B5F52BD9416200D73889 /* BascetViewController.swift */,
+				1853DB802BEF7818001E9D2C /* Cells */,
 			);
 			path = Bascet;
 			sourceTree = "<group>";
@@ -351,6 +381,7 @@
 			children = (
 				18B5B6352BE2B03800D73889 /* ProductCategories.swift */,
 				18B5B6372BE363AB00D73889 /* ProductsMeals.swift */,
+				1853DB852BEF7F62001E9D2C /* ProductParfumes.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -508,6 +539,7 @@
 				18B5B5FF2BDA2A7500D73889 /* QrCode+Button.swift in Sources */,
 				1853DB712BED27A2001E9D2C /* UIView+Extension.swift in Sources */,
 				18B5B5F02BD93E6600D73889 /* TabBarViewController.swift in Sources */,
+				1853DB842BEF79B2001E9D2C /* BaseCollectionViewCell.swift in Sources */,
 				188DE6282BD84A2200B41403 /* StartViewController.swift in Sources */,
 				1853DB622BE81CC9001E9D2C /* MessageViewConroller.swift in Sources */,
 				1853DB732BED61B7001E9D2C /* ProfileView.swift in Sources */,
@@ -516,20 +548,24 @@
 				1853DB6D2BECFE5B001E9D2C /* EmailAuthoViewController.swift in Sources */,
 				188DE6102BD8497300B41403 /* AppDelegate.swift in Sources */,
 				18B5B5E82BD9187700D73889 /* HomeViewController.swift in Sources */,
+				1853DB822BEF783A001E9D2C /* ProductCollectionViewCell.swift in Sources */,
 				188DE6122BD8497300B41403 /* SceneDelegate.swift in Sources */,
 				18B5B6342BE2AF0B00D73889 /* Constant.swift in Sources */,
 				188DE62D2BD852DA00B41403 /* AuthorizationViewController.swift in Sources */,
 				18B5B6092BDB04B100D73889 /* DetailViewController.swift in Sources */,
 				188DE6322BD9001D00B41403 /* BaseView.swift in Sources */,
+				1853DB7D2BEF7664001E9D2C /* ResultSearchBarViewController.swift in Sources */,
 				18B5B60C2BDBABF500D73889 /* SplashViewController.swift in Sources */,
 				1853DB752BED74F8001E9D2C /* EmailView.swift in Sources */,
 				18B5B5F62BD9416200D73889 /* BascetViewController.swift in Sources */,
 				18B5B60E2BDBADF000D73889 /* DetailView.swift in Sources */,
+				1853DB7F2BEF76C6001E9D2C /* ResultSearchBarCell.swift in Sources */,
 				18B5B6362BE2B03800D73889 /* ProductCategories.swift in Sources */,
 				18B5B6192BDFB85100D73889 /* ProductsJson.swift in Sources */,
 				1853DB682BE8E189001E9D2C /* AuthenticationService.swift in Sources */,
 				18B5B5FC2BD941AF00D73889 /* ProfileViewController.swift in Sources */,
 				18B5B6062BDABC7D00D73889 /* ProductsCollectionViewCell.swift in Sources */,
+				1853DB862BEF7F62001E9D2C /* ProductParfumes.swift in Sources */,
 				18B5B6312BE2AEE100D73889 /* NetworkService.swift in Sources */,
 				18B5B6172BDFB2DC00D73889 /* JsonParser.swift in Sources */,
 				188DE62A2BD84A3900B41403 /* StartView.swift in Sources */,

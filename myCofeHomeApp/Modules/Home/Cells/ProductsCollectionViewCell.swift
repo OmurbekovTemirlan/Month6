@@ -24,7 +24,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     static let reusId = "cell1"
     
-    private let images: UIImageView = {
+    private let productImageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 12
         image.clipsToBounds = true
@@ -40,7 +40,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         return stac
     }()
     
-   private let titleLabel: UILabel = {
+   private let productTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .black
@@ -48,7 +48,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let infoLabel: UILabel = {
+    private let productDiscriptionLabel: UILabel = {
          let label = UILabel()
          label.font = .systemFont(ofSize: 14, weight: .regular)
          label.textColor = .black
@@ -56,7 +56,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
          return label
      }()
     
-    private let priceLabel: UILabel = {
+    private let productPriceLabel: UILabel = {
          let label = UILabel()
          label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = UIColor(named: "yellow")
@@ -124,11 +124,11 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     private func setupAdd(){
         
-        addSubview(images)
+        addSubview(productImageView)
         addSubview(vStac)
-        vStac.addArrangedSubview(titleLabel)
-        vStac.addArrangedSubview(infoLabel)
-        vStac.addArrangedSubview(priceLabel)
+        vStac.addArrangedSubview(productTitleLabel)
+        vStac.addArrangedSubview(productDiscriptionLabel)
+        vStac.addArrangedSubview(productPriceLabel)
         addSubview(hStac)
         hStac.addArrangedSubview(minusBtn)
         hStac.addArrangedSubview(counterLabel)
@@ -139,13 +139,13 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     private func setupLayouts(){
         NSLayoutConstraint.activate([
             
-            images.centerYAnchor.constraint(equalTo: centerYAnchor),
-            images.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            images.heightAnchor.constraint(equalToConstant: 100),
-            images.widthAnchor.constraint(equalToConstant: 100),
+            productImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            productImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            productImageView.heightAnchor.constraint(equalToConstant: 100),
+            productImageView.widthAnchor.constraint(equalToConstant: 100),
             
             vStac.centerYAnchor.constraint(equalTo: centerYAnchor),
-            vStac.leadingAnchor.constraint(equalTo: images.trailingAnchor,constant: 10),
+            vStac.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor,constant: 10),
             vStac.heightAnchor.constraint(equalToConstant: 90),
             vStac.widthAnchor.constraint(equalToConstant: 170),
             
@@ -178,8 +178,8 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     }
     
     func fill(with item: Meal) {
-        titleLabel.text = item.strMeal!
-        priceLabel.text = "\(item.idMeal!) c"
+        productTitleLabel.text = item.strMeal!
+        productPriceLabel.text = "\(item.idMeal!) c"
 
         
         if let imageURL = URL(string: item.strMealThumb ?? "") {
@@ -199,7 +199,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
                 return
             }
             DispatchQueue.main.async {
-                self.images.image = image
+                self.productImageView.image = image
             }
         }
         task.resume()

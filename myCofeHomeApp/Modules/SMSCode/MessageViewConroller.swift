@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SnapKit
 
 class MessageViewConroller: BaseViewController {
     

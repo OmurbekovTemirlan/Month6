@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol SmsViewDelegate: AnyObject {
     func verifyCode(with code: String)
