@@ -1,0 +1,20 @@
+
+{
+    "categories": [
+    {
+    "categoryName": "Кофе"
+    },
+    {
+     "categoryName": "Дессерт"
+     },
+    {
+    "categoryName": "Выпечка"
+    },
+    {
+    "categoryName": "Коктейлы"
+    },
+    {
+    "categoryName": "Торты"
+    },
+     ]
+}
